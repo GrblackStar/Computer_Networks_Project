@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Протоколи за Комуникация</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #363430;
+            color: #cecece;
+            font-size: 17px;
+            font-family: 'Segoe UI';
+        }
+
+
+/*#region NAVBAR SECTION*/
+
+        header {
+            width: 100%;
+            background-color: rgb(71, 71, 71);
+            background-position: center center;
+            position: fixed;
+            z-index: 10;
+        }
+        header #main-menu {
+            background: rgb(71, 71, 71);
+            height: 60px;
+            line-height: 30px;
+            width: 100%;
+            border-bottom: solid #d9ac26 3px;
+        }
+        header nav#menu-area {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            width: 900px;
+        }
+        header nav#menu-area ul {
+            margin: 0;
+            padding: 0;
+        }
+        header nav#menu-area ul li {
+            float: left;
+            position: relative;
+            font-size: 15px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        header nav#menu-area ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            line-height: 60px;
+        }
+        header nav#menu-area ul li:hover>a {
+            background: rgb(100, 100, 100);
+        } 
+        header nav#menu-area ul li ul.submenu {
+            float: left;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            left: 0;
+            top: 60px;
+            background: rgb(71, 71, 71);
+            width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease-out, visibility 0.1s 0.1s linear;
+
+        }
+        header nav#menu-area ul li ul.submenu li {
+            border: none;
+            border-bottom: 2px solid #d9ac26;
+            clear: both;
+            margin-top: 15px;
+            padding: 0;
+            width: 200px;
+            transition: opacity 0.15s 0.15s ease-out, margin 0.3s 0.1s ease-out;
+        }
+        header nav#menu-area ul li:hover ul.submenu {
+            opacity: 1;
+            visibility: visible;
+        }
+        header nav#menu-area ul li:hover ul.submenu li {
+            margin-top: 0;
+            opacity: 1;
+        }
+
+/*#endregion */
+
+
+/*#region MAIN CONTAINERS SECTION*/
+
+        .container {
+            /*display: flex;*/
+            position: fixed;
+            top: 60px;
+            width: 100%;
+            overflow-y: auto;
+            max-height: 100vh;
+            background-color: #363430;
+        }
+
+        .left {
+            width: 450px;
+            background-color: #363430;
+            padding-left: 40px;
+            padding-top: 30px;
+            padding-right: 40px;
+            box-sizing: border-box;
+            position: relative;
+            font-size: 19px;
+        }
+        .left li {
+            margin-top: 20px;
+        }
+        .roadmap {
+            position: relative;
+        }
+        .roadmap-item {
+            list-style: none;
+            margin: 10px 0;
+            position: relative;
+        }
+        .roadmap-item a {
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+        .roadmap-item a:hover {
+            color: #d9ac26;
+        }
+        .circle {
+            width: 17px;
+            height: 17px;
+            background-color: #363430;
+            border: 2px solid #d9ac26;
+            border-radius: 50%;
+            margin-right: 20px;
+            box-sizing: border-box;
+        }
+        .roadmap-item a:hover .circle {
+            background-color: #d9ac26;
+        }
+        .line {
+            position: absolute;
+            top: 0;
+            left: 2.3%;
+            width: 2px;
+            height: 100%;
+            background-color: #d9ac26;
+            transform: translateX(-50%);
+        }
+
+        .right {
+            /*flex: 1; */
+            background-color: #363430;
+            width: calc(100vw - 800px);
+            position: absolute;
+            top: 60px;
+            padding-bottom: 200px;
+            margin-left: 520px;
+            overflow-y: auto;
+            font-family: 'Segoe UI';
+        }
+
+/*#endregion */
+
+
+/*#region arrow*/
+
+.arrow-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px;
+            padding-top: 130px;
+        }
+
+        .arrow {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            display: inline-block;
+        }
+
+        .left-arrow {
+            border-width: 10px 15px 10px 0;
+            border-color: transparent #d9ac26 transparent transparent;
+            margin-right: 10px;
+            margin-top: 2px;
+        }
+
+        .right-arrow {
+            border-width: 10px 0 10px 15px;
+            border-color: transparent transparent transparent #d9ac26;
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+
+        .arrow-link {
+            color: #d9ac26;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+        }
+
+        .arrow-link:hover {
+            color: #fff;
+        }
+/*#endregion */
+
+
+
+/*#region paragraph ComProt_Introduction*/
+        .introduction-paragraph{
+            margin-bottom: 80px;
+        }
+        .introduction-paragraph img {
+            margin-top: 30px;
+        }
+        .introduction-paragraph p {
+            margin-top: 50px;
+        }
+/*#endregion */
+
+/*#region paragraph protocolTypes*/
+        .protocolTypes-paragraph{
+            margin-bottom: 80px;
+        }
+        .protocolTypes-paragraph a{
+            color: #d9ac26;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+        .protocolTypes-paragraph a:hover{
+            color: #fff;
+        }
+/*#endregion */
+
+/*#region paragraph layering*/
+        .layering-paragraph{
+            margin-bottom: 80px;
+        }
+        .layering-paragraph a{
+            color: #d9ac26;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+        .layering-paragraph a:hover{
+            color: #fff;
+        }
+        .layering-paragraph img {
+            margin-top: 30px;
+        }
+/*#endregion */
+
+/*#region paragraph WhatisIP*/
+        .ip-paragraph{
+            margin-bottom: 80px;
+        }
+/*#endregion */
+
+/*#region paragraph ipaddress*/
+        .ipaddress-paragraph {
+            margin-bottom: 80px;
+        }
+        .ipaddress-paragraph img {
+            margin-top: 30px;
+        }
+/*#endregion */
+
+/*#region paragraph ippath*/
+        .ippath-paragraph {
+            margin-bottom: 80px;
+        }
+/*#endregion */
+
+/*#region paragraph ipprotocols*/
+        .ipprotocols-paragraph {
+            margin-bottom: 80px;
+        }
+        .ipprotocols-paragraph li{
+            margin-top: 50px;
+        }
+        .ipprotocols-paragraph a{
+            color: #d9ac26;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+        .ipprotocols-paragraph a:hover{
+            color: #fff;
+        }
+/*#endregion */
+
+
+
+
+/*#region footer*/
+footer {
+            background-color: #24241e;
+            color: #fff;
+            padding: 5px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer p {
+            margin: 5px;
+            margin-left: 40px;
+            margin-right: 40px;
+            font-size: 15px;
+        }
+
+
+/*#endregion */
+
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div id="main-menu">
+            <nav id="menu-area">
+                <ul>
+                    <li><a href="index.html">Начало</a></li>
+                    <li><a href="HTTPS_page.html">HTTPS</a></li>
+                    <li><a href="#">Статии</a>
+                        <ul class="submenu">
+                            <li><a href="CommunicationProtocols_page.html">Мрежови Протоколи</a></li>
+                            <li><a href="TCP_page.html">TCP/IP</a></li>
+                            <li><a href="SSLTLS_page.html">SSL/TLS</a></li>
+                            <li><a href="HTTP_page.html">HTTP</a></li>
+                            <li><a href="HTTPvsHTTPS_page.html">HTTP vs HTTPS</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="Resources_page.html">Източници</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div class="left">
+            <div class="roadmap">
+                <div class="line"></div>
+                <li class="roadmap-item"><a href="#ComProt_Introduction"><span class="circle"></span>Протоколи за мрежова комуникация</a></li>
+                <li class="roadmap-item"><a href="#ComProt_Types"><span class="circle"></span>Видове комуникационни протоколи</a></li>
+                <li class="roadmap-item"><a href="#ComProt_Layring"><span class="circle"></span>Проектиране на слоеве (Layering)</a></li>
+                <li class="roadmap-item"><a href="#ComProt_WhatisIP"><span class="circle"></span>Какво е Интернет Протокол (IP)?</a></li>
+                <li class="roadmap-item"><a href="#ComProt_IPaddress"><span class="circle"></span>Какво е IP адрес?</a></li>
+                <li class="roadmap-item"><a href="#ComProt_IPpath"><span class="circle"></span>Как работи маршрутизацията с IP?</a></li>
+                <li class="roadmap-item"><a href="#ComProt_ProtocolsinIP"><span class="circle"></span>Протоколи в рамките на IP</a></li>
+                <li class="roadmap-item"><a href="#ComProt_IPversions"><span class="circle"></span>Версии на IP</a></li>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="right">
+        <div id="ComProt_Introduction" class="introduction-paragraph">
+            <h1>Протоколи за мрежова комуникация</h1>
+            <hr style="border: 1px solid #d9ac26">
+            <div>
+                <p>Комуникационен протокол е система от правила, които позволяват на два или повече обекта в комуникационна система да предават информация чрез каквато и да е физическа среда. Протоколът определя формати за обмен на различни съобщения, правилата, синтаксиса, семантиката и синхронизацията на комуникацията и методите за възстановяване на възможни грешки. Протоколите могат да бъдат изпълнявани хардуерно, софтуерно или като комбинация от двете.</p>
+                <p>Информацията, обменяна между устройства през мрежа или друг носител, се управлява от правила и конвенции, които могат да бъдат дефинирани в спецификациите на комуникационни протоколи. Природата на комуникацията, реалните данни, които се обменят и всякакво поведение, зависещо от състоянието, се определят от тези спецификации. В цифровите изчислителни системи правилата могат да бъдат изразени чрез алгоритми и структури на данни. </p>
+                <p>Добре структуриран комуникационен протокол трябва да адресира няколко ключови елемента, включително форматите на данните, форматите на адресите, маршрутизацията, откриването на грешки, потвържденията, загубата на информация, посоката на потока на информацията, контрола на последователността, контрола на потока и опашките. Тези правила гарантират, че данните се предават, получават и интерпретират правилно в контекста на разговора.</p>
+            </div>
+            <center>
+                <img src=".\assets\ComunicationProtocols\senderRecipient.png" width="750px" height="180px"/>
+            </center>
+        </div>
+        <div id="ComProt_Types" class="protocolTypes-paragraph">
+            <h2>Видове комуникационни протоколи</h2>
+            <div>
+                <p>Има два основни вида комуникационни протоколи: текстови (text-based) и бинарни (binary).</p>
+                <p>Текстовите протоколи представят данни в четими от човека формати, докато бинарните протоколи са предназначени за машинна консумация и използват пълния обхват на байтовите стойности. Текстовите протоколи като FTP, SMTP и ранни версии на HTTP са оптимизирани за човешко анализиране и интерпретация. Те са съществени за отстраняване на грешки и ранното развитие на протокола. </p>
+                <a href="#ComProt_ProtocolsinIP">Научете повече за FTP и SMTP</a>
+                <p>Бинарните протоколи, като тези, използвани в съвременните стандарти като HTTP/2 и HTTP/3, предлагат ефективност по отношение на скоростта и използването на обхвата на лентата. Те са проектирани за комуникация между машини.</p>
+                <a href="HTTP_page.html">Научете повече за HTTP</a>
+            </div>
+        </div>
+        <div id="ComProt_Layring" class="layering-paragraph">
+            <h2>Проектиране на слоеве (Layering)</h2>
+            <div>
+                <p>Съвременното проектиране на протоколи се придържа към концепцията за слойност, която разделя дизайна/проектирането на протоколи на по-малки, добре дефинирани стъпки. Слойността позволява на сложните протоколи да бъдат разделени на по-прости, сътрудничащи протоколи. Всеки слой се занимава със специфични проблеми в комуникацията, което позволява модулно проектиране и тестване. Този подход предотвратява разрастването на сложни взаимодействия и опростява процеса на проектиране.</p>
+                <p>Един от най-известните примери за слойни протоколи е Internet Protocol Suite, който се състои от Transmission Control Protocol (TCP) и Internet Protocol (IP) <a href="TCP_page.html">Научете повече за TCP</a>. Слойният дизайн на Интернет позволява модулност и съвместимост с разнообразни мрежови среди. Този слоен подход е вдъхновен от OSI (Open Systems Interconnection), който служи като референция за обща комуникация и насърчава строги взаимодействия на протоколите.</p>
+            </div>
+            <center>
+                <img src=".\assets\ComunicationProtocols\protocolsByLayera.png" width="350px" height="350px"/>
+            </center>
+        </div>
+        <div id="ComProt_WhatisIP" class="ip-paragraph">
+            <h1>Какво е Интернет Протокол (IP)?</h1>
+            <p>The Internet Protocol (IP) е протокол или набор от правила за маршрутизиране и адресиране на данни в пакети, така че те да могат да пътуват по мрежи и да достигнат правилната дестинация. Данните, които преминават през Интернет, се разделят на по-малки части, наречени пакети. Към всеки пакет се прикрепя информация на IP, която помага на рутерите да изпратят пакетите на правилното място. На всяко устройство или домейн, свързан с Интернет, се присвоява IP адрес, и тъй като пакетите се насочват към IP адреса, който им е прикрепен, данните стигат там, където са необходими. Когато пакетите достигнат до своята дестинация, те се обработват по различен начин в зависимост от този транспортен протокол, който се използва в комбинация с IP.</p>
+        </div>
+        <div id="ComProt_IPaddress" class="ipaddress-paragraph">
+            <h2>Какво е IP адрес? Как работи адресирането с IP? </h2>
+            <p>IP адресът е уникален идентификатор, присвоен на устройство или домейн, свързан с Интернет. Всеки IP адрес е поредица от символи, като '192.168.1.1'. Чрез DNS резолвъри, които превръщат четимите от човека имена на домейни в IP адреси, потребителите могат да получат достъп до уебсайтове, без да запомнят тази сложна поредица от символи. Всеки IP пакет съдържа както IP адреса на устройството или домейна, изпращащо пакета, така и IP адреса на намерения получател, много като на едно писмо се включва както адреса на получателя, така и обратният адрес.</p>
+            <center>
+                <img src=".\assets\ComunicationProtocols\ipAddress.png" width="400px" height="250px"/>
+            </center>
+        </div>
+        <div id="ComProt_IPpath" class="ippath-paragraph">
+            <h2>Как работи маршрутизацията с IP?</h2>
+            <p>Интернетът се състои от свързани големи мрежи, всяка отговорена за определени блокове IP адреси. Тези големи мрежи се наричат автономни системи (AS). Различни протоколи за маршрутизация, включително BGP, помагат за маршрутизирането на пакетите между AS на базата на техните IP адреси на дестинация. Рутерите разполагат с таблица за маршрутизация, която показва през кои AS трябва да преминават пакетите, за да достигнат до желаната дестинация възможно най-бързо. Пакетите пътуват от AS до AS, докато стигнат до този, който поема отговорността за целевия IP адрес. Тогава този AS вътрешно маршрутизира пакетите към дестинацията.</p>
+        </div>
+        <div id="ComProt_ProtocolsinIP" class="ipprotocols-paragraph">
+            <h2>Протоколи в рамките на IP</h2>
+            <p>IP е протокол, при който не е необходимо комуникиращите устройства да са в непрекъсната връзка/комуникация. Всяко пакет от данни преминава независимо през мрежата. Въпреки това, протоколи на по-високо ниво, като Transmission Control Protocol (TCP) и User Datagram Protocol (UDP), работят върху IP, за да управляват потока на данни и да гарантират надеждна комуникация.</p>
+            <ol>
+                <li>
+                    <div>
+                        <h3>TCP/IP (Transmission Control Protocol/ Internet Protocol)</h3>
+                        <p>Transmission Control Protocol (TCP) е транспортен протокол, който гарантира, че всички пакети пристигат в определен ред след началото на предаването. IP протоколът гарантира, че всяко компютър, свързан с Интернет, има специфичен номер, наречен IP адрес. TCP специфицира как данните се разменят по Интернет и как трябва да бъдат разделени на IP пакети. Той също така се грижи пакетите да имат информация за източника на данните в съобщението, за адресата на съобщението, за последователността, в която съобщението трябва да се възстанови, и проверява дали съобщението е било изпратено правилно до конкретната дестинация. TCP е също така известен като connection-oriented протокол (обръща се внимание на самата връзка между устройствата).</p>
+                        <p>TCP е проектиран за надеждност, а не за скорост. Поради факта, че TCP се грижи, че всички пакети пристигат в правилния ред, се изпращат множество съобщения между устройствата за потвърждение , че пакетът е получен, което забавя зареждането на данни. Допълнително забавяне може да се получи и ако някои пакети липсват.</p>
+                        <a href="TCP_page.html">Научете повече за TCP/IP</a>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h3>UDP/IP (User Datagram Protocol)</h3>
+                        <p>User Datagram Protocol е още един широко използван транспортен протокол. Той е по-бърз от TCP, но също така е по-малко надежден.</p>
+                        <p>За разлика от TCP не установява надеждна връзка между устройствата преди предаване на данни и не гарантира, че данните ще бъдат получени в реда, в който са изпратени, или че те въобще ще бъдат получени. Вместо това UDP просто изпраща пакети данни до дестинация без проверка за грешки или контрол на потока. UDP се използва обикновено за приложения в реално време като  видео и аудио стрийминг, онлайн игри и VoIP (Гласова комуникация по Интернет) където малко количество загубени данни е приемливо и ниската латентност е важна.</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h3>SMTP(Simple Mail Transfer Protocol)</h3>
+                        <p>Тези протоколи са важни за изпращането и разпространението на имейли. Този протокол използва заглавието на писмото, за да получи електронната поща на получателя и я вписва в опашката на изходящата поща. И след като достави пощата до получаващия идентификационен имейл, тя премахва пощата от списъка с изходящи. Съобщението или електронната поща може да съдържа текст, видео, изображение и други. Той помага при дефинирането на някои правила за сървър за комуникация.</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h3>PPP(Point-to-Point Protocol)</h3>
+                        <p>Това е комуникационен протокол, използван за създаване на директна връзка между две комуникиращи устройства. Този протокол дефинира правилата, по които две устройства ще се удостоверяват взаимно и ще обменят информация помежду си. Например, потребител свързва своя компютър със сървъра на доставчик на интернет услуги и също използва PPP. Подобно на това, при свързване на два маршрутизатора за директна комуникация се използва PPP.</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h3>FTP (File Transfer Protocol)</h3>
+                        <p>Този протокол се използва за прехвърляне на файлове от една система на друга. Той работи по модел клиент-сървър. Когато едно устойство поиска прехвърляне на файл от друго, FTP създава връзка между двете и се удостоверява взаимно, използвайки техните идентификационни данни и пароли.</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h3>SFTP (Secure File Transfer Protocol)</h3>
+                        <p>SFTP също се нарича SSH FTP, тъй като кодира и командите и данните по време на предаването. SFTP е разширение на SSH и кодира файлове и данни, след което ги изпраща по сигурен поток на данни на Shell. Този протокол се използва за отдалечено свързване с други системи, като се изпълняват команди.</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h3>HTTP (Hyper Text Transfer Protocol)</h3>
+                        <p>Този протокол се използва за прехвърляне на хипертекстове по Интернет и е определен от World Wide Web за обмен на информация. Този протокол дефинира как информацията трябва да бъде форматирана и предавана. Той също така дефинира различните действия, които уеб браузърите трябва да предприемат в отговор на заявките за достъп до конкретна уеб страница. Всеки път, когато потребител отвори уеб браузър, той непосредствено използва HTTP, тъй като това е протоколът, използван за споделяне на текст, изображения и други мултимедийни файлове в Световната мрежа (World Wide Web).</p>
+                        <a href="HTTP_page.html">Научете повече за HTTP</a>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h3>HTTPS (HyperText Transfer Protocol Secure)</h3>
+                        <p>HTTPS е разширение на HTTP. Той се използва за сигурна комуникация по компютърна мрежа с SSL/TLS протокол за кодиране и удостоверяване. Обикновено уебсайтът използва HTTP протокол, но ако уебсайтът изисква някаква лична информация като данни за кредитна карта, данни за дебитни карти, OTP, и др., тогава е необходимо да бъде инсталиран SSL сертификат, за да направи уебсайта по-сигурен. </p>
+                        <a href="HTTPS_page.html">Научете повече за HTTPS</a>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h3>TELNET (Terminal Network)</h3>
+                        <p>TELNET е стандартен TCP/IP протокол, използван за услуга на visual terminal, предоставян от ISO. Този протокол позволява на една локална машина да се свърже с друга. Компютърът, към който се свързва, се нарича дистанционен компютър, а този, който се свързва, се нарича локален компютър. Операцията на TELNET позволява да се изобрази всичко, което се изпълнява на дистанционния компютър, на локалния компютър. Това работи на принципа клиент/сървър. </p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h3>POP3 (Post Office Protocol 3)</h3>
+                        <p>POP3 има два Message Access Agents (MAAs), като единият е клиентски MAA и другият е сървърен MAA за достъп до съобщения от пощенската кутия. Този протокол ни помага да сваляме и качваме имейли от пощенския сървър на получателя до компютъра. Този протокол може също така да се нарече еднопосочен клиент-сървър протокол. Работи на порт 110 и на порт 995.</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h3>ICMP</h3>
+                        <p>ICMP (Internet Control Message Protocol) е мрежов протокол, използван за изпращане на съобщения за грешки и информация относно мрежовите условия. Той е неразделна част от IP и се използва при диагностициране на проблеми с мрежовата връзка. Съобщенията на ICMP обикновено се генерират от мрежови устройства, като например маршрутизатори, в отговор на грешк, срещани при препращането на дейтаграми (datagram). ICMP може да бъде използван и като средство за управление на мрежата, за да се тества достъпността на хост и да се измери времето за пренасяне на пакети от източника до дестинацията и обратно. Трябва да се отбележи, че ICMP не е сигурен протокол и може да бъде използван в някои видове мрежови атаки като усилване на DDoS.</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h3>IMAP</h3>
+                        <p>IMAP (Internet Message Access Protocol) е протокол, използван за извличане на имайли от пощенски сървър. Той позволява на потребителите да достъпват и управляват своите имаейли на сървъра, вместо да ги изтеглят на локално устройство. Това означава, че потребителят има достъп от множество устройства и електронните писма ще бъдат синхронизирани по всички устройства. IMAP е по-гъвкав от POP3.</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h3>SSH</h3>
+                        <p>SSH (Secure Shell) е протокол, използван за защитен отдалечен вход и други мрежови услуги. Той предоставя сигурен и криптиран начин за отдалечен достъп и управление на сървъри, мрежови устройства и други компютърни системи. SSH използва криптография с публичен ключ, за да удостовери потребителя и за да криптира данните, които се предават, като го прави много по-сигурен от традиционните протоколи за отдалечен вход като Telnet. SSH също позволява за файлови трансфери чрез протоколите SCP (Secure Copy) и SFTP (Secure File Transfer Protocol). Той се използва широко в операционни системи на база UNIX, но е наличен и за Windows. </p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h3>Gopher</h3>
+                        <p>Gopher е вид протокол за теглене на файлове, който предоставя файлове описания за лесно управление, извличане и търсене. Всички файлове са наредени на отдалечен компютър по стратифициран начин. Това е стар протокол и не се използва много вече.</p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+        <div id="ComProt_IPversions" class="ipversions-paragrath">
+            <h2>Версии на IP</h2>
+            <div>
+                <h3>IPv4</h3>
+                <p>Четвъртата и първоначално широко разпространена версия на Интернет Протокола се нарича IPv4 (Интернет Протокол версия 4). Това е най-популярната версия на Интернет Протокола и е отговорна за разпространението на данни в цялата мрежа. Максималният брой уникални адреси за IPv4 е 4,294,967,296 (232), които са възможни благодарение на използването на 32-битови адреси. Адресът на мрежата и адресът на хоста са двата компонента на всеки адрес. Адресът на хоста идентифицира определено устройство в мрежата, докато адресът на мрежата идентифицира мрежата, към която принадлежи устройството.</p>
+                <h3>IPv6</h3>
+                <p>Най-новата версия на Интернет Протокола, IPv6, беше създадена с цел да се справи с недостатъците на протокола IPv4. С IPv4 с 32-битови адреси е възможен максимален брой уникални адреси от 4,3 милиарда. Обратно, IPv6 използва 128-битови адреси, които позволяват значително по-голям брой уникални адреси. Това е важно, защото адресите на IPv4 се изчерпват, а има все повече устройства, които изискват достъп до интернет. Освен това, IPv6 предлага подобрени функции за сигурност като интегрирано удостоверяване и кодиране.</p>
+            </div>
+        </div>
+
+        <div class="arrow-container">
+            <a href="index.html" class="arrow-link">
+                <div class="arrow left-arrow"></div>
+                <span>Предишна страница</span>
+            </a>
+    
+            <a href="TCP_page.html" class="arrow-link">
+                <span>Следваща страница</span>
+                <div class="arrow right-arrow"></div>
+            </a>
+        </div>
+    </div>
+    
+    
+    <footer>
+        <p>Христиана Алексанрова Христова</p>
+        <p>Факултетен номер: 121220041</p>
+        <p style="color: #d9ac26;">Курсов проект по Компютърни Мрежи</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+    
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+    
+                if (targetElement) {
+                    const offset = 60; // Adjust this value based on your fixed header height
+                    const targetPosition = targetElement.offsetTop - offset;
+    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

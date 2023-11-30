@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTTPS Въведение</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #363430;
+            color: #cecece;
+            font-size: 17px;
+            font-family: 'Segoe UI';
+        }
+
+
+/*#region NAVBAR SECTION*/
+
+        header {
+            width: 100%;
+            background-color: rgb(71, 71, 71);
+            background-position: center center;
+            position: fixed;
+            z-index: 10;
+        }
+        header #main-menu {
+            background: rgb(71, 71, 71);
+            height: 60px;
+            line-height: 30px;
+            width: 100%;
+            border-bottom: solid #d9ac26 3px;
+        }
+        header nav#menu-area {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            width: 900px;
+        }
+        header nav#menu-area ul {
+            margin: 0;
+            padding: 0;
+        }
+        header nav#menu-area ul li {
+            float: left;
+            position: relative;
+            font-size: 15px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        header nav#menu-area ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            line-height: 60px;
+        }
+        header nav#menu-area ul li:hover>a {
+            background: rgb(100, 100, 100);
+        } 
+        header nav#menu-area ul li ul.submenu {
+            float: left;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            left: 0;
+            top: 60px;
+            background: rgb(71, 71, 71);
+            width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease-out, visibility 0.1s 0.1s linear;
+
+        }
+        header nav#menu-area ul li ul.submenu li {
+            border: none;
+            border-bottom: 2px solid #d9ac26;
+            clear: both;
+            margin-top: 15px;
+            padding: 0;
+            width: 200px;
+            transition: opacity 0.15s 0.15s ease-out, margin 0.3s 0.1s ease-out;
+        }
+        header nav#menu-area ul li:hover ul.submenu {
+            opacity: 1;
+            visibility: visible;
+        }
+        header nav#menu-area ul li:hover ul.submenu li {
+            margin-top: 0;
+            opacity: 1;
+        }
+
+/*#endregion */
+
+
+/*#region MAIN CONTAINERS SECTION*/
+
+        .container {
+            /*display: flex;*/
+            position: fixed;
+            top: 60px;
+            width: 100%;
+            overflow-y: auto;
+            max-height: 100vh;
+            background-color: #363430;
+        }
+
+        
+        .left {
+            width: 450px;
+            background-color: #363430;
+            padding-left: 40px;
+            padding-top: 30px;
+            padding-right: 40px;
+            box-sizing: border-box;
+            position: relative;
+            font-size: 19px;
+        }
+        .left li {
+            margin-top: 20px;
+        }
+        .roadmap {
+            position: relative;
+        }
+        .roadmap-item {
+            list-style: none;
+            margin: 10px 0;
+            position: relative;
+        }
+        .roadmap-item a {
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+        .roadmap-item a:hover {
+            color: #d9ac26;
+        }
+        .circle {
+            width: 17px;
+            height: 17px;
+            background-color: #363430;
+            border: 2px solid #d9ac26;
+            border-radius: 50%;
+            margin-right: 20px;
+            box-sizing: border-box;
+        }
+        .roadmap-item a:hover .circle {
+            background-color: #d9ac26;
+        }
+        .line {
+            position: absolute;
+            top: 0;
+            left: 2.3%;
+            width: 2px;
+            height: 100%;
+            background-color: #d9ac26;
+            transform: translateX(-50%);
+        }
+
+
+        .right {
+            /*flex: 1; */
+            background-color: #363430;
+            width: calc(100vw - 800px);
+            position: absolute;
+            top: 60px;
+            padding-bottom: 200px;
+            margin-left: 520px;
+            overflow-y: auto;
+            font-family: 'Segoe UI';
+        }
+
+/*#endregion */
+
+/*#region arrow*/
+
+        .arrow-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px;
+            padding-top: 130px;
+        }
+
+        .arrow {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            display: inline-block;
+        }
+
+        .left-arrow {
+            border-width: 10px 15px 10px 0;
+            border-color: transparent #d9ac26 transparent transparent;
+            margin-right: 10px;
+            margin-top: 2px;
+        }
+
+        .right-arrow {
+            border-width: 10px 0 10px 15px;
+            border-color: transparent transparent transparent #d9ac26;
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+
+        .arrow-link {
+            color: #d9ac26;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+        }
+
+        .arrow-link:hover {
+            color: #fff;
+        }
+/*#endregion */
+
+
+
+/*#region paragraph ComProt_Introduction*/
+        .introduction-paragraph{
+            margin-bottom: 80px;
+        }
+        .introduction-paragraph img {
+            margin-top: 30px;
+            border-radius: 8px;
+        }
+        .subtitle {
+            margin-top: 50px;
+        }
+        .introduction-paragraph a{
+            color: #d9ac26;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+        .introduction-paragraph a:hover{
+            color: #fff;
+        }
+/*#endregion */
+
+/*#region paragraph ComProt_Introduction*/
+        .howitworks-paragraph{
+            margin-bottom: 80px;
+        }
+        .howitworks-paragraph img {
+            margin-top: 30px;
+            border-radius: 8px;
+        }
+        .subtitle {
+            margin-top: 50px;
+        }
+        .howitworks-paragraph a{
+            color: #d9ac26;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+        .howitworks-paragraph a:hover{
+            color: #fff;
+        }
+/*#endregion */
+
+/*#region paragraph ComProt_Introduction*/
+        .ownerinfo-paragraph{
+            margin-bottom: 80px;
+        }
+        .subtitle {
+            margin-top: 50px;
+        }
+        .ownerinfo-paragraph a{
+            color: #d9ac26;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+        .ownerinfo-paragraph a:hover{
+            color: #fff;
+        }
+/*#endregion */
+
+/*#region paragraph ComProt_Introduction*/
+        .inportance-paragraph{
+            margin-bottom: 80px;
+        }
+        .inportance-paragraph a{
+            color: #d9ac26;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+        .inportance-paragraph a:hover{
+            color: #fff;
+        }
+/*#endregion */
+
+/*#region paragraph ComProt_Introduction*/
+        .pros-paragraph{
+            margin-bottom: 80px;
+        }
+        .pros-paragraph li{
+            margin-bottom: 15px;
+        } 
+/*#endregion */
+
+/*#region paragraph ComProt_Introduction*/
+.limit-paragraph{
+            margin-bottom: 80px;
+        }
+        .limit-paragraph li{
+            margin-bottom: 15px;
+        } 
+/*#endregion */
+
+/*#region paragraph ComProt_Introduction*/
+        .issues-paragraph{
+            margin-bottom: 80px;
+        }
+        .issues-paragraph li{
+            margin-bottom: 15px;
+        } 
+/*#endregion */
+
+
+/*#region footer*/
+footer {
+            background-color: #24241e;
+            color: #fff;
+            padding: 5px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer p {
+            margin: 5px;
+            margin-left: 40px;
+            margin-right: 40px;
+            font-size: 15px;
+        }
+
+
+/*#endregion */
+    </style>
+</head>
+<body>
+    <header>
+        <div id="main-menu">
+            <nav id="menu-area">
+                <ul>
+                    <li><a href="index.html">Начало</a></li>
+                    <li><a href="HTTPS_page.html">HTTPS</a></li>
+                    <li><a href="#">Статии</a>
+                        <ul class="submenu">
+                            <li><a href="CommunicationProtocols_page.html">Мрежови Протоколи</a></li>
+                            <li><a href="TCP_page.html">TCP/IP</a></li>
+                            <li><a href="SSLTLS_page.html">SSL/TLS</a></li>
+                            <li><a href="HTTP_page.html">HTTP</a></li>
+                            <li><a href="HTTPvsHTTPS_page.html">HTTP vs HTTPS</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="Resources_page.html">Източници</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div class="left">
+            <div class="roadmap">
+                <div class="line"></div>
+                <li class="roadmap-item"><a href="#HTTPSpage_Introduction"><span class="circle"></span>Въведение в HTTPS</a></li>
+                <li class="roadmap-item"><a href="#HTTPSpage_HowItWorks"><span class="circle"></span>Как работи HTTPS?</a></li>
+                <li class="roadmap-item"><a href="#HTTPSpage_OwnerInfo"><span class="circle"></span>Каква информация предоставя HTTPS?</a></li>
+                <li class="roadmap-item"><a href="#HTTPSpage_WhyIsItImportant"><span class="circle"></span>Защо е важен HTTPS?</a></li>
+                <li class="roadmap-item"><a href="#HTTPSpage_Pros"><span class="circle"></span>Предимства на HTTPS</a></li>
+                <li class="roadmap-item"><a href="#HTTPSpage_Limitations"><span class="circle"></span>Ограничения на HTTPS</a></li>
+                <li class="roadmap-item"><a href="#HTTPSpage_SecurityIssues"><span class="circle"></span>Проблеми със сигурността на HTTPS</a></li>
+                <li class="roadmap-item"><a href="#HTTPSpage_Conclusion"><span class="circle"></span>Заключение</a></li>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div id="HTTPSpage_Introduction" class="introduction-paragraph">
+            <h1>Въведение в HTTPS</h1>
+            <hr style="border: 1px solid #d9ac26">
+            <h2 class="subtitle">Какво е HTTPS?</h2>
+            <p>HTTP е основата на световната мрежа. Това е протоколът, използван за обработка, визуализация и доставка на уеб страници от страна на сървъра към клиентския браузър. </p>
+            <p>Hypertext transfer protocol secure (HTTPS) е защитената версия на HTTP <a href="HTTP_page.html">Научете повече за HTTP</a>. Комуникационният протокол се кодира използвайки Transport Layer Security (TLS) или познат по-рано като Secure Sockets Layer (SSL) <a href="SSLTLS_page.html">Научете повече за SSL и TLS</a>, с цел увеличаване на сигурността на трансфера на данни. Това е особено важно, когато потребителите предават лични данни, когато влизат в банкова сметка, имейл или други.</p>
+            <p>Всяка уеб страница, особено тези, които изискват данни за вход, трябва да използва HTTPS. В съвременните уеб браузъри като Chrome, уеб сайтовете, които не използват HTTPS, се маркират по различен начин от тези, които го използват - с ключалка в адресната лента. </p>
+            <center>
+                <img src=".\assets\HTTPS\greenaddress.png" width="350px" height="100px"/>
+            </center>
+        </div>
+        <div id="HTTPSpage_HowItWorks" class="howitworks-paragraph">
+            <h2>Как работи HTTPS?</h2>
+            <p>HTTPS използва Uniform Resource Identifier (URI), подобно на HTTP, но го надгражда като добавя SSL/TLS протокол. Този протокол осигурява комуникации, като използва асиметрично кодиране. Този вид система за сигурност използва два различни ключа, за да кодира комуникацията между две страни:</p>
+            <ul>
+                <li><u>Частният ключ</u> - този ключ се контролира от собственика на уеб сайта и се съхранява на уеб сървър и се използва за декодиране на информация, която е кодирана с публичния ключ.</li>
+                <li><u>Публичният ключ</u> - този ключ е достъпен за всеки, който иска да взаимодейства със сървъра по начин, който е сигурен. Информация, която е шифрована с публичния ключ, може да бъде декодирана само с частния ключ.</li>
+            </ul>
+            <a href="https://www.digicert.com/faq/cryptography/what-is-ssl-cryptography">Научете повече за криптирането на данни и ключовете</a>
+            <p>HTTP и HTTPS работят по принципа на клиент-сървър. Уеб браузърът обикновено действа като клиент, а уеб сървърът - като HTTP сървър. За да достъпи уеб страница, браузърът изпраща заявка към сървъра, който я обработва, изпраща отговор и затваря връзката. Заявката и отговорът се състоят от заглавие (header) с контролна информация и реалните данни. </p>
+            <a href="HTTP_page.html#HTTPpage_ClientsServers">Научете повече за HTTP компоненти</a>
+            <p class="subtitle"><u>СТЪПКА ПО СТЪПКА:</u></p>
+            <ol>
+                <li>Клиентът иницира HTTPS връзка: Когато потребител иска да достъпи защитен сайт, неговият браузър изпраща заявка към сървъра за установяване на HTTPS връзка.</li>
+                <li>Ръкостискане SSL/TLS (handshake): Клиентът и сървърът извършват SSL/TLS ръкостискане, процес, посредством който те договарят и установяват сигурна връзка. По време на ръкостискане те се съгласяват за SSL/TLS версия, кодиращи алгоритми и други параметри, които да се използват за сигурната връзка. <a href="SSLTLS_page.html#SSLpage_SSLhandshake">Научете повече за SSL ръкостискане</a></li>
+                <li>Сертификат на сървъра за SSL/TLS: Сървърът представя своя сертификат за SSL/TLS на клиента по време на процеса на ръкостискане. Този сертификат е издаден от удостоверителен орган (CA) и съдържа публичния ключ на сървъра, информация за идентичността на сървъра и електронен подпис от CA. <a href="SSLTLS_page.html#SSLpage_CA">Научете повече за CA</a></li>
+                <li>Проверка на сертификата: Клиентът проверява сертификата на сървъра, за да гарантира неговата автентичност и валидност. Клиентът проверява дата на валидност на сертификата, издателя и дали домейнът в сертификата съвпада с домейна на сървъра. </li>
+                <li>Обмен на ключове: Клиентът и сървърът обменят криптографска информация, като предварително зададат ключ, който се използва за генериране на симетричен ключ за кодиране на данни. Тази информация се кодира, използвайки публичния ключ на сървъра от сертификата му, като се гарантира, че само сървърът със съответния частен ключ може да я разкодира.</li>
+                <li>Симетрично кодиране: След като клиентът и сървърът се съгласят за ключа за кодиране, те преминават към симетричното кодиране, където същият ключ се използва за кодиране и декодиране на данни. Това шифроване осигурява сигурен канал за обмен на данни, гарантирайки поверителност и цялост.</li>
+                <li>Обмен на данни: С установяването на сигурната връзка клиентът и сървърът могат да обменят данни сигурно. Клиентът изпраща заявки за уеб страници, изображения или други ресурси, а сървърът изпраща заявените данни, всичко кодирано с общия симетричен ключ.</li>
+                <li>Завършване на връзката: След завършване на обмена на данни клиентът и сървърът могат да затворят връзка. В някои случаи те могат да изберат да възобновят връзката по-късно, използвайки същия ключ или да извършат ново SSL/TLS ръкстискане, за да генерират нов ключ.</li>
+            </ol>
+            <center>
+                <img src=".\assets\HTTPS\httpsflow.png" />
+            </center>
+            <p>HTTPS създава сигурен канал в незасигурни мрежи, защитавайки данните злонамерени намеси. Въпреки това HTTPS не може да скрие IP адреси, номера на портовете или имената на домейните. Уеб браузърите имат доверие на сайтовете с HTTPS, базирано на предварително инсталирани сертифиато, издадени от CA. Това е особено важно на публични Wi-Fi мрежи, тъй като HTTPS предпазва от различни заплахи за сигурността, кражба на данни и нарушения на поверителността.</p>
+        </div>
+        <div id="HTTPSpage_OwnerInfo" class="ownerinfo-paragraph">
+            <h2>Каква информация предоставя HTTPS на потребителите относно собствениците на уебсайтове?</h2>
+            <p>Сертифициращите органи (Certificate Authorities - CAs) използват три основни метода за валидация при издаване на дигиталните сертификати. Използваният метод за валидация определя информацията, която ще бъде включена в SSL/TLS сертификата на уебсайта:</p>
+            <ul>
+                <li>Валидация на домейн (Domain Validation - DV) просто потвърждава, че името на домейна,покрито от сертификата е под контрола на хората, поискали сертификата.</li>
+                <li>Сертификати за организация / физическо лице (Organization / Individual Validation - OV/IV) включват потвърденото име на бизнес или друга организация (OV) или на физическо лице (IV).</li>
+                <li>Разширена валидация (Extended Validation - EV) представлява най-високия стандарт на доверие и изисква подробно проучване от страна на CA. EV сертификатите се издават само на бизнеси и други регистрирани организации, а не на физически лица.</li>
+            </ul>
+            <a href="SSLTLS_page.html#SSLpage_TypesOfSSL">Научете повече за видовете SSL сертификати</a>
+        </div>
+        <div id="HTTPSpage_WhyIsItImportant" class="inportance-paragraph">
+            <h2>Защо е важен HTTPS? Какво се случва, ако уебсайтът няма HTTPS?</h2>
+            <p>HTTPS предотвратява уебсайтовете да имат информацията достъпна по начин, по който лесно може да бъде видяна от всеки, който подслушва мрежата. Когато информацията се изпраща чрез обикновен HTTP, тя се разделя на пакети от данни, които могат лесно да бъдат "слушани" с помощта на безплатен софтуер. Това прави комуникацията през незащитени среди, като например обществени Wi-Fi мрежи, изключително уязвима. Фактически всички комуникации, извършвани чрез HTTP, се извършват в чист текст, което ги прави достъпни за всеки, който разполага с правилните инструменти.</p>
+            <p>С HTTPS трафикът се кодира, така че дори ако пакетите се "подслушват" или се прехвърлят по друг начин, те ще бъдат представени като безсмислени символи.</p>
+            <p>На уебсайтове без HTTPS е възможно доставчиците на интернет услуги (ISPs) или други посредници да вмъкват съдържание в уебстраниците без съгласието на собственика на уебсайта. Това обикновено включва рекламиране, където ISP, който търси увеличение на приходите си, вмъква платени реклами в уеб страниците на клиентите си. HTTPS премахва способността на ненадзорни трети страни да вмъкват реклами в уеб съдържание.</p>
+        </div>
+        <div id="HTTPSpage_Pros" class="pros-paragraph">
+            <h2>Предимства на HTTPS</h2>
+            <ul>
+                <li><u>Скриване на информация:</u> Данните, обменяни между клиента и сървъра, се кодират, защитавайки ги от подслушване или прехвърляне от трети страни. Кодирането гарантира, че данните не могат да бъдат фалшифицирани или променяни по време на трансфера без да се открие.</li>
+                <li><u>Идентификация:</u> Сертификатите SSL/TLS потвърждават идентичността на сървъра, гарантирайки, че клиентът комуникира с правилния сървър и не с фалшификатор, което помага за предпазване срещу атаки от тип "човек по средата" (man-in-the-middle attacks).</li>
+                <li><u>Доверие:</u> Иконката с ключалката или "https://" в адресната лента на браузъра показва, че уебсайтът използва HTTPS и сигнализира на потребителите, че тяхната връзка е сигурна и уебсайтът е надежден. Това може да доведе до повече доверие и увереност в сайта, което може да е особено важно за електронната търговия или уебсайтове, които обработват лична информация за потребителите.</li>
+                <li><u>Подобрена SEO:</u> Търсачки, като Google, дават приоритет на уебсайтовете, активирали HTTPS, в техните резултати от търсене. Това означава, че уебсайтовете, използващи HTTPS, могат да се възползват от подобрена видимост в резултатите от търсенето и потенциално да насочат повече трафик към сайта.</li>
+                <li><u>По-добра производителност:</u> Съвременните технологии, като HTTP/2, които могат да подобрят производителността на уебсайта и времето за зареждане, често изискват HTTPS. Чрез използването на HTTPS уебсайтовете могат да се възползват от тези подобрения.</li>
+                <li><u>Съответствие:</u> Множество индустриални регулации и стандарти, като GDPR (Общ регламент за защита на данните) и PCI DSS (Стандарт за сигурност на данните за плащанията), изискват използването на HTTPS за защита на лични данни на потребителите и гарантиране на поверителността.</li>
+            </ul>
+        </div>
+        <div id="HTTPSpage_Limitations" class="limit-paragraph">
+            <h2>Ограничения на HTTPS</h2>
+            <p>Въпреки че HTTPS предлага множество предимства по отношение на сигурността, поверителността и доверието на потребителите, има някои ограничения и предизвикателства, свързани с неговата имплементация и използване:</p>
+            <ul>
+                <li><u>Сложност на имплементацията:</u> Създаването на HTTPS изисква получаване и управление на SSL/TLS сертификати, конфигуриране на сървъра, за да поддържа криптирани връзки, и евентуално актуализиране на вътрешни връзки и ресурси. За големи или сложни уебсайтове този процес може да отнеме време и може да изисква намеса на експерти.</li>
+                <li><u>Цена:</u> Придобиването на SSL/TLS сертификати от доверени Сертифициращи органи (CA) може да бъде скъпо, особено за премиум сертификати, предлагащи допълнителни функции или разширена валидация.</li>
+                <li><u>Натоварване и проблеми с производителността:</u> HTTPS внася някакво натоварване поради процеса на установяване на SSL/TLS връзката и криптирането/дешифрирането на данните. Въпреки че съвременният хардуер и оптимизациите като TLS 1.3 и HTTP/2 са намалили това натоварване значително, то все още може да представлява проблем за уебсайтовете с ограничени ресурси или с голям трафик.</li>
+                <li><u>Проблеми на смесено съдържание:</u> Ако уебсайт, използващ HTTPS, включва ресурси от източници, които не са HTTPS (например изображения, скриптове или стилове), браузърите могат да показват предупреждение или да блокират незащитеното съдържание. Важно е да се гарантира, че всички ресурси на сайта се зареждат сигурно, за да се избегнат проблемите.</li>
+                <li><u>Уязвимост пред определени атаки:</u> Въпреки че HTTPS значително подобрява сигурността, то не е защитено пред всички атаки. Имало е злоупотребяване с уязвимости в SSL/TLS протоколите и преди. Собствениците на уебсайтове трябва да са актуализирани до последните пачове, за да намалят рисковете.</li>
+            </ul>
+        </div>
+        <div id="HTTPSpage_SecurityIssues" class="issues-paragraph">
+            <h2>Проблеми със сигурността на HTTPS</h2>
+            <ul>
+                <li><u>Слаби конфигурации на SSL/TLS:</u> Сървърите могат да бъдат конфигурирани да използват стари или слаби SSL/TLS протоколи, алгоритми за криптиране, което ги прави уязвими към атаки. Важно е да се поддържат актуални конфигурации на сървърите и да се спазват най-добрите практики за конфигурация на SSL/TLS.</li>
+                <li><u>Уязвимости в SSL/TLS протоколите:</u> Има случаи, в които са били открити уязвимости в SSL/TLS протоколите, като например атаките POODLE или Heartbleed. Собствениците на уебсайтове трябва да бъдат информирани за известни уязвимости и да прилагат необходимите актуализации или поправки, за да се справят с тези проблеми.</li>
+                <li><u>Фалшиви сертификати:</u> Нападателите могат да получат фалшиви сертификати от компрометирани или злонамерени Сертифициращи органи (CA), което им позволява да се представят като легитимни уебсайтове и да извършват атаки "човек по средата" (man-in-the-middle attacks).</li>
+                <li><u>Изтекли или анулирани сертификати:</u> Ако SSL/TLS сертификатът на сървъра е изтекъл или е бил анулиран, браузърите ще показват сигурностни предупреждения.</li>
+                <li><u>Грешно конфигурирани сертификати:</u> Сертификатът може да бъде неправилно конфигуриран, което води до предупреждения на браузъра или незащитени връзки.</li>
+                <li><u>Несигурен код или инфраструктура на уебсайта:</u> HTTPS защитава данните по време на трансфера, но не гарантира сигурността на самия уебсайт. Уебсайтовете все още могат да бъдат уязвими за атаки като SQL инжекции (SQL injections), XSS или нарушения в инфраструктурата, което поставя данните на потребителите в риск.</li>
+                <li><u>SSL измама:</u> В този тип атака нападателят прихваща комуникацията между клиент и сървър, принуждавайки връзката да промени сигурната HTTPS на HTTP, което позволява достъп до некриптирани данни.</li>
+                <li><u>Уязвимости на браузъра:</u> Уязвимости от страна на клиента в уеб браузъри могат потенциално да изложат потребителите на рискове за сигурност, дори когато използват HTTPS. Редовното актуализиране на браузърите и гарантирането, че сигурностните функции са активирани, може да помогне за намаляване на този риск.</li>
+            </ul>
+        </div>
+        <div id="HTTPSpage_Conclusion" class="conclusion-paragraph">
+            <h2>Заключение</h2>
+            <p>HTTPS е разширение на HTTP протокола, което предоставя сигурен канал за предаване на данни между клиенти и сървъри по интернет. HTTPS използва протоколи за криптиране SSL/TLS, за да гарантира поверителност, цялост и удостоверяване на обмена на данни, защитавайки ги от подслушване, злоупотреба и атаки, които целят удостоверяването.</p>
+            <p>Въпреки многобройните си предимства, HTTPS има някои ограничения и сигурностни аспекти. Проблеми, свързани със сертификатите, могат да представляват рискове за сигурността. Въпреки това тези притеснения могат да бъдат намалени чрез правилната имплементация и поддръжка на HTTPS и свързаните технологии. Организациите трябва да се информират за възможни уязвимости и постоянно да подобряват практиките си за сигурност, за да защитават потребителите и техните данни.</p>
+        </div>
+
+        
+        <div class="arrow-container">
+            <a href="HTTP_page.html" class="arrow-link">
+                <div class="arrow left-arrow"></div>
+                <span>Предишна страница</span>
+            </a>
+    
+            <a href="HTTPvsHTTPS_page.html" class="arrow-link">
+                <span>Следваща страница</span>
+                <div class="arrow right-arrow"></div>
+            </a>
+        </div>
+    
+    </div>
+    
+    
+    <footer>
+        <p>Христиана Алексанрова Христова</p>
+        <p>Факултетен номер: 121220041</p>
+        <p style="color: #d9ac26;">Курсов проект по Компютърни Мрежи</p>
+    </footer>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+    
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+    
+                if (targetElement) {
+                    const offset = 60; // Adjust this value based on your fixed header height
+                    const targetPosition = targetElement.offsetTop - offset;
+    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

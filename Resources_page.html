@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Източници</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #363430;
+            color: #cecece;
+            font-size: 17px;
+            font-family: 'Segoe UI';
+        }
+
+
+/*#region NAVBAR SECTION*/
+        header {
+            width: 100%;
+            background-color: rgb(71, 71, 71);
+            background-position: center center;
+            position: fixed;
+            z-index: 10;
+        }
+        header #main-menu {
+            background: rgb(71, 71, 71);
+            height: 60px;
+            line-height: 30px;
+            width: 100%;
+            border-bottom: solid #d9ac26 3px;
+        }
+        header nav#menu-area {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            width: 900px;
+        }
+        header nav#menu-area ul {
+            margin: 0;
+            padding: 0;
+        }
+        header nav#menu-area ul li {
+            float: left;
+            position: relative;
+            font-size: 15px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        header nav#menu-area ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            line-height: 60px;
+        }
+        header nav#menu-area ul li:hover>a {
+            background: rgb(100, 100, 100);
+        } 
+        header nav#menu-area ul li ul.submenu {
+            float: left;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            left: 0;
+            top: 60px;
+            background: rgb(71, 71, 71);
+            width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease-out, visibility 0.1s 0.1s linear;
+
+        }
+        header nav#menu-area ul li ul.submenu li {
+            border: none;
+            border-bottom: 2px solid #d9ac26;
+            clear: both;
+            margin-top: 15px;
+            padding: 0;
+            width: 200px;
+            transition: opacity 0.15s 0.15s ease-out, margin 0.3s 0.1s ease-out;
+        }
+        header nav#menu-area ul li:hover ul.submenu {
+            opacity: 1;
+            visibility: visible;
+        }
+        header nav#menu-area ul li:hover ul.submenu li {
+            margin-top: 0;
+            opacity: 1;
+        }
+
+/*#endregion */
+
+
+
+
+/*#region MAIN CONTAINERS SECTION*/
+        .right {
+            /*flex: 1; */
+            background-color: #363430;
+            width: calc(100vw - 780px);
+            position: absolute;
+            top: 60px;
+            padding-bottom: 200px;
+            margin-left: 370px;
+            overflow-y: auto;
+        }
+
+/*#endregion */
+
+/*#region paragraphs*/
+        .paragraph a{
+            color: #fff;
+            font-weight: lighter;
+            font-size: 19px;
+            text-decoration: none;
+        }
+        .paragraph a:hover{
+            color: #d9ac26;
+        }
+        .paragraph {
+            margin-bottom: 80px;
+        }
+        .paragraph li{
+            margin-bottom: 10px;
+        }
+/*#endregion */
+
+/*#region footer*/
+footer {
+            background-color: #24241e;
+            color: #fff;
+            padding: 5px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer p {
+            margin: 5px;
+            margin-left: 40px;
+            margin-right: 40px;
+            font-size: 15px;
+        }
+
+
+/*#endregion */
+
+    </style>
+</head>
+<body>
+    <header>
+        <div id="main-menu">
+            <nav id="menu-area">
+                <ul>
+                    <li><a href="index.html">Начало</a></li>
+                    <li><a href="HTTPS_page.html">HTTPS</a></li>
+                    <li><a href="#">Статии</a>
+                        <ul class="submenu">
+                            <li><a href="CommunicationProtocols_page.html">Мрежови Протоколи</a></li>
+                            <li><a href="TCP_page.html">TCP/IP</a></li>
+                            <li><a href="SSLTLS_page.html">SSL/TLS</a></li>
+                            <li><a href="HTTP_page.html">HTTP</a></li>
+                            <li><a href="HTTPvsHTTPS_page.html">HTTP vs HTTPS</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="Resources_page.html">Източници</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="right">
+       <div class="paragraph">
+            <h2>Протоколи за мрежова комуникация</h2>
+            <hr style="border: 1px solid #d9ac26">
+            <ul style="color: #d9ac26;">
+                <li><a href="https://en.wikipedia.org/wiki/Communication_protocol">Communication protocol</a></li>
+                <li><a href="https://www.kio.tech/en-us/blog/data-center/network-communication-protocols">Network Communication Protocols</a></li>
+                <li><a href="https://www.cloudflare.com/en-gb/learning/network-layer/internet-protocol/">What is the Internet Protocol?</a></li>
+                <li><a href="https://www.geeksforgeeks.org/types-of-internet-protocols/">Types of Internet Protocols</a></li>
+            </ul>
+       </div>
+       <div class="paragraph">
+            <h2>Transmission Control Protocol (TCP)</h2>
+            <hr style="border: 1px solid #d9ac26">
+            <ul style="color: #d9ac26;">
+                <li><a href="https://www.fortinet.com/resources/cyberglossary/tcp-ip">What is Transmission Control Protocol TCP/IP?</a></li>
+                <li><a href="https://www.techtarget.com/searchnetworking/definition/TCP">Transmission Control Protocol (TCP)</a></li>
+                <li><a href="https://www.geeksforgeeks.org/what-is-transmission-control-protocol-tcp/">What is Transmission Control Protocol (TCP)?</a></li>
+                <li><a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/tcp-ip/">What is TCP/IP?</a></li>
+            </ul>
+       </div>
+       <div class="paragraph">
+            <h2>Сертификати за сигурност. SSL/TLS protocols.</h2>
+            <hr style="border: 1px solid #d9ac26">
+            <ul style="color: #d9ac26;">
+                <li><a href="https://www.upguard.com/blog/ssl-certificate">What is an SSL Certificate?</a></li>
+                <li><a href="https://aws.amazon.com/what-is/ssl-certificate/">What is an SSL/TLS Certificate?</a></li>
+                <li><a href="https://www.digicert.com/faq/cryptography/what-is-ssl-cryptography">WHAT IS SSL CRYPTOGRAPHY?</a></li>
+                <li><a href="https://www.digicert.com/what-is-an-ssl-certificate">WHAT IS AN SSL CERTIFICATE?</a></li>
+                <li><a href="https://venafi.com/machine-identity-basics/what-is-an-ssl-certificate/">What is an SSL Certificate?</a></li>
+                <li><a href="https://www.keyfactor.com/blog/what-is-ssl/">What is SSL? Understanding the History of SSL and How it Works</a></li>
+                <li><a href="https://www.ssldragon.com/blog/what-is-ssl-certificate/">What Is an SSL Certificate and How Does It Work?</a></li>
+                <li><a href="https://www.usnews.com/360-reviews/privacy/what-is-ssl-certificate">What is an SSL Certificate?</a></li>
+                <li><a href="https://www.encryptionconsulting.com/education-center/ssl-tls-certificates/">What is an SSL certificate and Why is it important?</a></li>
+                <li><a href="https://www.geeksforgeeks.org/transport-layer-security-tls/">Transport Layer Security (TLS)</a></li>
+                <li><a href="https://www.cloudflare.com/en-gb/learning/ssl/transport-layer-security-tls/">What is TLS (Transport Layer Security)?</a></li>
+                <li><a href="https://www.internetsociety.org/deploy360/tls/basics/">TLS Basics</a></li>
+            </ul>
+        </div>
+        <div class="paragraph">
+            <h2>HTTP</h2>
+            <hr style="border: 1px solid #d9ac26">
+            <ul style="color: #d9ac26;">
+                <li><a href="https://www.goanywhere.com/blog/http-vs-tcp-whats-the-difference">HTTP vs. TCP: What's the Difference?</a></li>
+                <li><a href="https://tooabstractive.com/networking/what-is-the-difference-between-http-protocol-and-tcp-protocol/">What Is the Difference Between HTTP Protocol and TCP Protocol?</a></li>
+                <li><a href="https://reqbin.com/Article/HttpProtocol">HTTP Protocol Overview</a></li>
+                <li><a href="https://networkdirection.net/articles/network-theory/httpprotocol/">HTTP Protocol</a></li>
+                <li><a href="https://www.scaler.com/topics/computer-network/hypertext-transfer-protocol/">Hypertext Transfer Protocol (HTTP)</a></li>
+                <li><a href="https://www.lifewire.com/hypertext-transfer-protocol-817944">How HTTP Works: Hypertext Transfer Protocol Explained</a></li>
+                <li><a href="https://salemal.medium.com/simple-note-on-http-protocol-af13b106bc5a">Simple Note on HTTP Protocol</a></li>
+                <li><a href="https://en.wikibooks.org/wiki/Communication_Networks/HTTP_Protocol">Communication Networks/HTTP Protocol</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview">An overview of HTTP</a></li>
+                <li><a href="https://www.javatpoint.com/computer-network-http">HTTP</a></li>
+                <li><a href="https://www.geeksforgeeks.org/http-full-form/">HTTP Full Form</a></li>
+            </ul>
+        </div>
+        <div class="paragraph">
+            <h2>HTTPS</h2>
+            <hr style="border: 1px solid #d9ac26">
+            <ul style="color: #d9ac26;">
+                <li><a href="https://en.wikipedia.org/wiki/HTTPS">HTTPS</a></li>
+                <li><a href="https://www.cloudflare.com/en-gb/learning/ssl/what-is-https/">What is HTTPS?</a></li>
+                <li><a href="https://anushadasari.medium.com/the-https-protocol-explained-under-the-hood-c7bd9f9aaa7b">The HTTPS protocol explained! — Under the Hood</a></li>
+                <li><a href="https://www.nwkings.com/the-difference-between-http-and-https-protocol">A Guide to HTTP and the Difference Between HTTP and HTTPS</a></li>
+                <li><a href="https://wirexsystems.com/resource/protocols/https/">HTTPS: Network Protocol Explained</a></li>
+                <li><a href="https://www.fortinet.com/resources/cyberglossary/what-is-https">What is HTTPS?</a></li>
+                <li><a href="https://www.semrush.com/blog/what-is-https/">What Is HTTPS: The Definitive Guide to How HTTPS Works</a></li>
+                <li><a href="https://www.ssl.com/faqs/what-is-https/">What is HTTPS?</a></li>
+                <li><a href="https://www.geeksforgeeks.org/explain-working-of-https/">Explain the working of HTTPS</a></li>
+                <li><a href="https://www.izooto.com/blog/understanding-http-https-protocols">Easy Understanding of Web Protocols - HTTP and HTTPS</a></li>
+                <li><a href="https://www.digicert.com/what-is-ssl-tls-and-https ">WHAT IS SSL, TLS & HTTPS?</a></li>
+                <li><a href="https://www.guru99.com/difference-http-vs-https.html">Key Difference between HTTP and HTTPS</a></li>
+                <li><a href="https://dev.classmethod.jp/articles/understanding-http-https-udp-tcp-and-tls-protocols/">Understanding HTTP, HTTPS, UDP, TCP and TLS Protocols</a></li>
+                <li><a href="https://www.hostinger.com/tutorials/http-vs-https">HTTP vs HTTPS: Comparison, Pros and Cons, and More</a></li>
+                <li><a href="https://www.studysmarter.co.uk/explanations/computer-science/computer-network/http-and-https/">HTTP and HTTPS</a></li>
+                <li><a href="https://www.bluevolt.com/en-us/bluevoltblog/what-is-difference-between-http-and-https">WHAT'S THE DIFFERENCE BETWEEN HTTP AND HTTPS?</a></li>
+                <li><a href="https://history-computer.com/http-vs-https/">HTTP vs. HTTPS: Full Comparison</a></li>
+            </ul>
+       </div>
+    </div>
+    
+    
+    <footer>
+        <p>Христиана Алексанрова Христова</p>
+        <p>Факултетен номер: 121220041</p>
+        <p style="color: #d9ac26;">Курсов проект по Компютърни Мрежи</p>
+    </footer>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+    
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+    
+                if (targetElement) {
+                    const offset = 60; // Adjust this value based on your fixed header height
+                    const targetPosition = targetElement.offsetTop - offset;
+    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

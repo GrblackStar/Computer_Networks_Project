@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TCP/IP Протокол</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #363430;
+            color: #cecece;
+            font-size: 17px;
+            font-family: 'Segoe UI';
+        }
+
+
+/*#region NAVBAR SECTION*/
+
+        header {
+            width: 100%;
+            background-color: rgb(71, 71, 71);
+            background-position: center center;
+            position: fixed;
+            z-index: 10;
+        }
+        header #main-menu {
+            background: rgb(71, 71, 71);
+            height: 60px;
+            line-height: 30px;
+            width: 100%;
+            border-bottom: solid #d9ac26 3px;
+        }
+        header nav#menu-area {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            width: 900px;
+        }
+        header nav#menu-area ul {
+            margin: 0;
+            padding: 0;
+        }
+        header nav#menu-area ul li {
+            float: left;
+            position: relative;
+            font-size: 15px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        header nav#menu-area ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            line-height: 60px;
+        }
+        header nav#menu-area ul li:hover>a {
+            background: rgb(100, 100, 100);
+        } 
+        header nav#menu-area ul li ul.submenu {
+            float: left;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            left: 0;
+            top: 60px;
+            background: rgb(71, 71, 71);
+            width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease-out, visibility 0.1s 0.1s linear;
+
+        }
+        header nav#menu-area ul li ul.submenu li {
+            border: none;
+            border-bottom: 2px solid #d9ac26;
+            clear: both;
+            margin-top: 15px;
+            padding: 0;
+            width: 200px;
+            transition: opacity 0.15s 0.15s ease-out, margin 0.3s 0.1s ease-out;
+        }
+        header nav#menu-area ul li:hover ul.submenu {
+            opacity: 1;
+            visibility: visible;
+        }
+        header nav#menu-area ul li:hover ul.submenu li {
+            margin-top: 0;
+            opacity: 1;
+        }
+
+/*#endregion */
+
+
+/*#region MAIN CONTAINERS SECTION*/
+
+        .container {
+            /*display: flex;*/
+            position: fixed;
+            top: 60px;
+            width: 100%;
+            overflow-y: auto;
+            max-height: 100vh;
+            background-color: #363430;
+        }
+
+        .left {
+            width: 450px;
+            background-color: #363430;
+            padding-left: 40px;
+            padding-top: 30px;
+            padding-right: 40px;
+            box-sizing: border-box;
+            position: relative;
+            font-size: 19px;
+        }
+        .left li {
+            margin-top: 20px;
+        }
+        .roadmap {
+            position: relative;
+        }
+        .roadmap-item {
+            list-style: none;
+            margin: 10px 0;
+            position: relative;
+        }
+        .roadmap-item a {
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+        .roadmap-item a:hover {
+            color: #d9ac26;
+        }
+        .circle {
+            width: 17px;
+            height: 17px;
+            background-color: #363430;
+            border: 2px solid #d9ac26;
+            border-radius: 50%;
+            margin-right: 20px;
+            box-sizing: border-box;
+        }
+        .roadmap-item a:hover .circle {
+            background-color: #d9ac26;
+        }
+        .line {
+            position: absolute;
+            top: 0;
+            left: 2.3%;
+            width: 2px;
+            height: 100%;
+            background-color: #d9ac26;
+            transform: translateX(-50%);
+        }
+
+        .right {
+            /*flex: 1; */
+            background-color: #363430;
+            width: calc(100vw - 800px);
+            position: absolute;
+            top: 60px;
+            padding-bottom: 200px;
+            margin-left: 520px;
+            overflow-y: auto;
+            font-family: 'Segoe UI';
+        }
+
+/*#endregion */
+
+
+/*#region arrow*/
+
+.arrow-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px;
+            padding-top: 130px;
+        }
+
+        .arrow {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            display: inline-block;
+        }
+
+        .left-arrow {
+            border-width: 10px 15px 10px 0;
+            border-color: transparent #d9ac26 transparent transparent;
+            margin-right: 10px;
+            margin-top: 2px;
+        }
+
+        .right-arrow {
+            border-width: 10px 0 10px 15px;
+            border-color: transparent transparent transparent #d9ac26;
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+
+        .arrow-link {
+            color: #d9ac26;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+        }
+
+        .arrow-link:hover {
+            color: #fff;
+        }
+/*#endregion */
+
+
+
+/*#region paragraph TCP_Introduction*/
+        .introduction-paragraph{
+            margin-bottom: 80px;
+        }
+        .introduction-paragraph p{
+            margin-top: 50px;
+        }
+/*#endregion */
+
+/*#region paragraph TCP_IP*/
+        .tcpip-paragraph{
+            margin-bottom: 80px;
+        }
+        .tcpip-paragraph a{
+            color: #d9ac26;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+        .tcpip-paragraph a:hover{
+            color: #fff;
+        }
+/*#endregion */
+
+/*#region paragraph TCP_Howitworks*/
+        .howworks-paragraph{
+            margin-bottom: 80px;
+        }
+        .howworks-paragraph img {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .howworks-paragraph a{
+            color: #d9ac26;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+        .howworks-paragraph a:hover{
+            color: #fff;
+        }
+/*#endregion */
+
+/*#region paragraph TCP_layers*/
+        .layers-paragraph{
+            margin-bottom: 80px;
+        }
+        .layers-paragraph img {
+            margin-top: 30px;
+        }
+        .layers-paragraph li {
+            margin-top: 50px;
+        }
+/*#endregion */
+
+/*#region paragraph TCP_characteristics*/
+        .character-paragraph{
+            margin-bottom: 80px;
+        }
+        .character-paragraph li {
+            margin-bottom: 50px;
+        }
+/*#endregion */
+
+/*#region paragraph TCP_pros*/
+        .pros-paragraph{
+            margin-bottom: 80px;
+        }
+/*#endregion */
+
+/*#region paragraph TCP_cons*/
+        .cons-paragraph{
+            margin-bottom: 80px;
+        }
+/*#endregion */
+
+
+/*#region footer*/
+footer {
+            background-color: #24241e;
+            color: #fff;
+            padding: 5px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer p {
+            margin: 5px;
+            margin-left: 40px;
+            margin-right: 40px;
+            font-size: 15px;
+        }
+
+
+/*#endregion */
+
+    </style>
+</head>
+<body>
+    <header>
+        <div id="main-menu">
+            <nav id="menu-area">
+                <ul>
+                    <li><a href="index.html">Начало</a></li>
+                    <li><a href="HTTPS_page.html">HTTPS</a></li>
+                    <li><a href="#">Статии</a>
+                        <ul class="submenu">
+                            <li><a href="CommunicationProtocols_page.html">Мрежови Протоколи</a></li>
+                            <li><a href="TCP_page.html">TCP/IP</a></li>
+                            <li><a href="SSLTLS_page.html">SSL/TLS</a></li>
+                            <li><a href="HTTP_page.html">HTTP</a></li>
+                            <li><a href="HTTPvsHTTPS_page.html">HTTP vs HTTPS</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="Resources_page.html">Източници</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div class="left">
+            <div class="roadmap">
+                <div class="line"></div>
+                <li class="roadmap-item"><a href="#TCPpage_Introduction"><span class="circle"></span>Transmission Control Protocol (TCP)</a></li>
+                <li class="roadmap-item"><a href="#TCPpage_TCPandIP"><span class="circle"></span>Взаимодействие между TCP/IP</a></li>
+                <li class="roadmap-item"><a href="#TCPpage_HowItWorks"><span class="circle"></span>Как работи (TCP)/IP?</a></li>
+                <li class="roadmap-item"><a href="#TCPpage_4LayerModel"><span class="circle"></span>4-те слоя на TCP/IP модела</a></li>
+                <li class="roadmap-item"><a href="#TCPpage_Characteristics"><span class="circle"></span>Характеристики на TCP/IP</a></li>
+                <li class="roadmap-item"><a href="#TCPpage_Pros"><span class="circle"></span>Предимства</a></li>
+                <li class="roadmap-item"><a href="#TCPpage_Cons"><span class="circle"></span>Недостатъци</a></li>
+                <li class="roadmap-item"><a href="#TCPpage_Conclusion"><span class="circle"></span>Заключение</a></li>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div id="TCPpage_Introduction" class="introduction-paragraph">
+            <h1>Transmission Control Protocol (TCP)</h1>
+            <hr style="border: 1px solid #d9ac26">
+            <p>TCP е основен компонент на набора от интернет протоколите. Често бива наречен TCP/IP. Той действа в рамките на транспортния слой (Transport Layer) и играе решаваща роля за осигуряване на надежден, подреден и без грешки пренос на данни между приложения, свързани посредством IP мрежи. Големите интернет приложения, включително уеб страниците, електронната поща, отдалеченото управление и файловият трансфер, разчитат на TCP, за да облекчават сигурния пренос на данни.</p>
+            <p>TCP е протокол, който изисква установяване на връзка между клиент и сървър преди започване на пренос на данни (connection-oriented protocol). Този процес включва тройно ръкостискане (three-way handshake), което, въпреки че гарантира надеждност, внася известно забавяне в преноса на данни. Въпреки това, за приложения, където ниска латентност е от съществено значение, често се предпочитат алтернативи като UDP.</p>
+        </div>
+        <div id="TCPpage_TCPandIP" class="tcpip-paragraph">
+            <h2>Взаимодействие между TCP/IP</h2>
+            <p>TCP и IP не са отделни неща, а работят заедно, за да гарантират, че данните достигат до крайната им дестинация в мрежата. IP определя адреса (IP адрес) на целевото приложение или устройство, на което трябва да бъдат изпратени данните. TCP, от своя страна, носи отговорност за фактическия пренос на данни и маршрутизация в архитектурата на мрежата. Тази комбинация улеснява комуникацията на дълги разстояния, като подпомага ефективния пренос на данни. Процесът се нарича обикновено TCP/IP и подчертава зависимостта на двата протокола.</p>
+            <a href="CommunicationProtocols_page.html#ComProt_WhatisIP">Научете повече за IP</a>
+        </div>
+        <div id="TCPpage_HowItWorks" class="howworks-paragraph">
+            <h2>Как работи (TCP)/IP?</h2>
+            <p>TCP/IP моделът е стандартният метод за обмен на данни в Интернет. Разработен е от Министерство на отбраната на САЩ, за да позволи точен и правилен пренос на данни между устройства. Съобщенията се разделят на пакети, за да се избегне необходимостта да се преизпраща цялото съобщение, ако се сблъскат с проблем по време на преноса. Пакетите се възстановяват автоматично, след като достигнат до своята дестинация. Всеки пакет може да избере различен маршрут между източника и компютъра на дестинацията, в зависимост от това дали първоначалният маршрут стане затруднен или недостъпен.</p>
+            <center>
+                <img src=".\assets\TCP\packetTransportationInTCP.png" width="500px" height="200px"/>
+            </center>
+            <p>TCP/IP разделя задачите на комуникация в четири слоя, които поддържат стандартизирания процес, без хардуерните и софтуерните доставчици да извършват управление сами. Пакетите трябва да преминат през тези слоеве, преди да бъдат получени от устройството, след което TCP/IP минава през слоевете в обратен ред, за да възстанови съобщението в неговият първоначален формат.</p>
+            <p>Тъй като TCP е протокол, базиран на установяване на връзка, той установява и поддържа връзка между приложения или устройства, докато завършат обмена на данни. Той определя как трябва да бъде разделено оригиналното съобщение на пакети, номерира и ги възстановява, след което ги изпраща на други устройства в мрежата, като маршрутизатори, защитни портали и комутатори, и след това на тяхната дестинация. TCP също изпраща и приема пакети от мрежовия слой, управлява предаването на изпуснати пакети, управлява контрола на потока и гарантира, че всички пакети достигат до своята дестинация.</p>
+            <p>Добър пример за това как работи практически е, когато се изпраща имейл, използвайки SMTP от сървър за електронна поща. За да започне процеса, TCP слоят на сървъра разделя съобщението на пакети, номерира ги и ги препраща към IP слоя, който след това пренася всеки пакет до сървъра на крайната дестинация. Когато пакетите пристигнат, те се предават обратно на TCP слоя, за да бъдат възстановени в оригиналния формат на съобщението и се предават обратно на сървъра за електронна поща, който доставя съобщението в пощенската кутия на потребителя.</p>
+            <p>TCP/IP използва тройно ръкостискане (three-way handshake), за да установи връзка между устройство и сървър, което гарантира, че множество TCP сокетни връзки могат да се предават в двата посоки едновременно. И двете устройства трябва да синхронизират и потвърдят пакетите преди да започне комуникацията, след което могат да преговарят, разделят и предават TCP сокетни връзки.</p>
+            <p>В резултат на това протоколи от високо ниво, които трябва да предават данни, използват TCP протокол. Примери включват методи за споделяне на данни между равнопоставени като File Transfer Protocol (FTP), Secure Shell (SSH) и Telnet. Той се използва и при IMAP, POP и SMTP, HTTP.</p>
+            <a href="HTTP_page.html">Научете повече за HTTP</a>
+        </div>
+        <div id="TCPpage_4LayerModel" class="layers-paragraph">
+            <h2>4-те слоя на TCP/IP модела</h2>
+            <p>TCP/IP моделът разделя мрежовите комуникационни задачи на четири отделни слоя, осигурявайки стандартизирани процеси, без да се разчита на конкретни хардуерни или софтуерни реализации. Тези слоеве определят как данните се организират и обменят между приложения, устройства и сървъри. </p>
+            <center>
+                <img src=".\assets\TCP\OSImodelTCP.png" width="600px" height="350px"/>
+            </center>
+            <ol>
+                <li>
+                    <div>
+                        <h3>Datalink layer</h3>
+                        <p>Слоят за данни определя как трябва да се изпращат данните, управлява физическия процес на изпращане и получаване на данни и отговаря за предаването на данни между приложения или устройства в мрежа. Това включва дефиниране на начина, по който данните трябва да бъдат сигнализирани от хардуер и други предавателни устройства в мрежа, като драйвера на компютърно устройство, Ethernet кабел, мрежова интерфейсна карта (NIC) или безжична мрежа. Нарича се още слой на ниво мрежов интерфейс (link layer), слой за мрежов достъп (network access layer), слой на мрежовия интерфейс (network interface layer) или физически слой (physical layer) и е комбинацията от физическия слой и слоя за връзка с данни на модела Open Systems Interconnection (OSI), който стандартизира комуникационните функции на компютърни и телекомуникационни системи.</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h3>Internet layer</h3>
+                        <p>Интернет слоя е отговорен за изпращането на пакети от мрежа и контролира движението им в мрежата, за да се гарантира, че те достигат до местоназначението си. Слоя осигурява функциите и процедурите за прехвърляне на последователности от данни между приложения и устройства в мрежи.</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h3>Transport layer</h3>
+                        <p>Транспортният слой е отговорен за предоставянето на стабилна и надеждна връзка за данни между оригиналното приложение или устройство и предназначението му. Това е нивото, на което данните се разделят на пакети и се номерират, за да се създаде последователност. След това транспортният слой определя колко данни трябва да бъдат изпратени, къде трябва да бъдат изпратени и с каква скорост. Той гарантира, че пакетите с данни се изпращат без грешки и в последователност и получава потвърждението, че крайното устройство е получило пакетите.</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h3>Application layer</h3>
+                        <p>Приложния слой се отнася до програми, които се нуждаят от TCP/IP, за да им помогне да комуникират помежду си. Това е нивото, с което потребителите обикновено взаимодействат, като системи за електронна поща и платформи за съобщения. Той съчетава сесийния, презентационния и приложния слой на OSI модела.</p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+        <div id="TCPpage_Characteristics" class="character-paragraph">
+            <h2>Характеристики на TCP/IP </h2>
+            <ul>
+                <li>
+                    <div>
+                        <p><b>Система за номериране на сегменти (Segment Numbering System)</b></p>
+                        <p>TCP следи сегментите, които се предават или получават, като присвоява номера на всеки един от тях. Специфичен номер на байт (Byte Number) се присвоява на байтовете данни, които трябва да бъдат прехвърлени, докато на сегментите се присвояват поредни номера. Номерата за потвърждение (Acknowledgment Numbers) се присвояват на получените сегменти. </p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <p><b>Ориентиран към връзката (Connection Oriented)</b></p>
+                        <p>Това означава, че подателят и получателят са свързани помежду си до завършване на процеса. Редът на данните се запазва, т.е. редът остава същият преди и след предаване. </p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <p><b>Пълен дуплекс (Full Duplex)</b></p>
+                        <p>В TCP данните могат да се предават от получателя към подателя или обратно по едно и също време. Повишава ефективността на потока от данни между изпращача и получателя.</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <p><b>Контрол на потока</b></p>
+                        <p>Контролът на потока ограничава скоростта, с която изпращачът прехвърля данни. Това се прави, за да се осигури надеждна доставка. Получателят непрекъснато подсказва на подателя колко данни могат да бъдат получени.</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <p><b>Контрол на грешки</b></p>
+                        <p>TCP прилага механизъм за контрол на грешки за надежден трансфер на данни, като се проверяват отделните сегменти. Контролът на грешките е байт-ориентиран. Контролът на грешките включва - Управление на повредени и загубени сегменти, сегменти извън реда, дублирани сегменти и т.н. </p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <p><b>Контрол на задръстванията</b></p>
+                        <p>TCP взема предвид нивото на претоварване в мрежата. Нивото на претоварване се определя от количеството данни, изпратени от подателя.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="TCPpage_Pros" class="pros-paragraph">
+            <h2>Предимства</h2>
+            <ul>
+                <li>Това е надежден протокол</li>
+                <li>Предоставя механизъм за проверка на грешки, както и механизъм за възстановяване</li>
+                <li>Дава контрол на потока.</li>
+                <li>Гарантира, че данните достигат правилната дестинация в точния ред, в който са били изпратени.</li>
+                <li>Отворен протокол, който не е собственост на никоя организация или физическо лице</li>
+                <li>Присвоява IP адрес на всеки компютър в мрежата и име на домейн за всеки сайт, като по този начин прави всеки сайт на устройство да бъде различим в мрежата.</li>
+            </ul>
+        </div>
+        <div id="TCPpage_Cons" class="cons-paragraph">
+            <h2>Недостатъци</h2>
+            <ul>
+                <li>TCP е направен за широкообхватни мрежи, поради което неговият размер може да се превърне в проблем за мрежи с малки ресурси </li>
+                <li>TCP изпълнява няколко слоя, така че може да забави скоростта на мрежата.</li>
+                <li>Не е генерично по природа. Което означава, че не може да представлява друг протоколен стек освен TCP/IP пакета. Например, не може да работи с Bluetooth връзка.</li>
+                <li>Няма модификации от разработката преди около 30 години.</li>
+                <li>Сигурност: Пакетите данни, изпратени през TCP/IP, не са лични, което означава, че могат да бъдат видени или прихванати. Поради тази причина е жизненоважно да се избягва използването на обществени Wi-Fi мрежи за изпращане на лични данни и да се гарантира, че информацията е криптирана. Един от начините за криптиране на данни, споделяни чрез TCP/IP, е чрез виртуална частна мрежа (VPN).</li>
+            </ul>
+        </div>
+        <div id="TCPpage_Conclusion" class="conclusion-paragraph">
+            <h2>Заключение</h2>
+            <p>В обобщение, TCP и IP са основополагащи протоколи в света на компютърните мрежи. TCP, работещ в рамките на транспортния слой, се фокусира върху надеждността и реда на доставка на данни. IP, като част от интернет слоя, отговаря за адресирането и маршрутизирането на пакети с данни. Заедно TCP и IP формират основата на интернет комуникацията, като гарантират, че данните се предават сигурно и ефективно в мрежите. TCP/IP моделът, със своите четири отделни слоя, опростява и стандартизира мрежовите комуникационни процеси. Докато TCP/IP предлага множество предимства, като надеждност и проверка за грешки, от съществено значение е да се вземат предвид потенциалните недостатъци като проблеми с производителността на мрежата и липса на поддръжка за определени не-TCP/IP протоколи. Тъй като интернет продължава да се разширява, бяха въведени по-нови IP версии като IPv6, за да се справят с ограниченията и да се гарантира непрекъснат растеж на интернет.</p>
+        </div>
+        
+        <div class="arrow-container">
+            <a href="CommunicationProtocols_page.html" class="arrow-link">
+                <div class="arrow left-arrow"></div>
+                <span>Предишна страница</span>
+            </a>
+    
+            <a href="SSLTLS_page.html" class="arrow-link">
+                <span>Следваща страница</span>
+                <div class="arrow right-arrow"></div>
+            </a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Христиана Алексанрова Христова</p>
+        <p>Факултетен номер: 121220041</p>
+        <p style="color: #d9ac26;">Курсов проект по Компютърни Мрежи</p>
+    </footer>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+    
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+    
+                if (targetElement) {
+                    const offset = 60; // Adjust this value based on your fixed header height
+                    const targetPosition = targetElement.offsetTop - offset;
+    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SSL/TLS Протоколи и Сертификати</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #363430;
+            color: #cecece;
+            font-size: 17px;
+            font-family: 'Segoe UI';
+        }
+
+
+/*#region NAVBAR SECTION*/
+
+        header {
+            width: 100%;
+            background-color: rgb(71, 71, 71);
+            background-position: center center;
+            position: fixed;
+            z-index: 10;
+        }
+        header #main-menu {
+            background: rgb(71, 71, 71);
+            height: 60px;
+            line-height: 30px;
+            width: 100%;
+            border-bottom: solid #d9ac26 3px;
+        }
+        header nav#menu-area {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            width: 900px;
+        }
+        header nav#menu-area ul {
+            margin: 0;
+            padding: 0;
+        }
+        header nav#menu-area ul li {
+            float: left;
+            position: relative;
+            font-size: 15px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        header nav#menu-area ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            line-height: 60px;
+        }
+        header nav#menu-area ul li:hover>a {
+            background: rgb(100, 100, 100);
+        } 
+        header nav#menu-area ul li ul.submenu {
+            float: left;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            left: 0;
+            top: 60px;
+            background: rgb(71, 71, 71);
+            width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease-out, visibility 0.1s 0.1s linear;
+
+        }
+        header nav#menu-area ul li ul.submenu li {
+            border: none;
+            border-bottom: 2px solid #d9ac26;
+            clear: both;
+            margin-top: 15px;
+            padding: 0;
+            width: 200px;
+            transition: opacity 0.15s 0.15s ease-out, margin 0.3s 0.1s ease-out;
+        }
+        header nav#menu-area ul li:hover ul.submenu {
+            opacity: 1;
+            visibility: visible;
+        }
+        header nav#menu-area ul li:hover ul.submenu li {
+            margin-top: 0;
+            opacity: 1;
+        }
+
+/*#endregion */
+
+/*#region MAIN CONTAINERS SECTION*/
+
+        .container {
+            /*display: flex;*/
+            position: fixed;
+            top: 60px;
+            width: 100%;
+            overflow-y: auto;
+            max-height: 100vh;
+            background-color: #363430;
+        }
+        
+        .left {
+            width: 450px;
+            background-color: #363430;
+            padding-left: 40px;
+            padding-top: 30px;
+            padding-right: 40px;
+            box-sizing: border-box;
+            position: relative;
+            font-size: 19px;
+        }
+        .left li {
+            margin-top: 20px;
+        }
+        .roadmap {
+            position: relative;
+        }
+        .roadmap-item {
+            list-style: none;
+            margin: 10px 0;
+            position: relative;
+        }
+        .roadmap-item a {
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+        .roadmap-item a:hover {
+            color: #d9ac26;
+        }
+        .circle {
+            width: 17px;
+            height: 17px;
+            background-color: #363430;
+            border: 2px solid #d9ac26;
+            border-radius: 50%;
+            margin-right: 20px;
+            box-sizing: border-box;
+        }
+        .roadmap-item a:hover .circle {
+            background-color: #d9ac26;
+        }
+        .line {
+            position: absolute;
+            top: 0;
+            left: 2.3%;
+            width: 2px;
+            height: 100%;
+            background-color: #d9ac26;
+            transform: translateX(-50%);
+        }
+
+        .right {
+            /*flex: 1; */
+            background-color: #363430;
+            width: calc(100vw - 800px);
+            position: absolute;
+            top: 60px;
+            padding-bottom: 200px;
+            margin-left: 520px;
+            overflow-y: auto;
+            font-family: 'Segoe UI';
+        }
+
+/*#endregion */
+
+/*#region arrow*/
+
+.arrow-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px;
+            padding-top: 130px;
+        }
+
+        .arrow {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            display: inline-block;
+        }
+
+        .left-arrow {
+            border-width: 10px 15px 10px 0;
+            border-color: transparent #d9ac26 transparent transparent;
+            margin-right: 10px;
+            margin-top: 2px;
+        }
+
+        .right-arrow {
+            border-width: 10px 0 10px 15px;
+            border-color: transparent transparent transparent #d9ac26;
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+
+        .arrow-link {
+            color: #d9ac26;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+        }
+
+        .arrow-link:hover {
+            color: #fff;
+        }
+/*#endregion */
+
+
+/*#region paragraph SSL_Introduction*/
+        .seccert-paragraph{
+            margin-bottom: 80px;
+        }
+        .seccert-paragraphp{
+            margin-top: 50px;
+        }
+        .seccert-paragraph a{
+            color: #d9ac26;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+        .seccert-paragraph a:hover{
+            color: #fff;
+        }
+        .seccert-paragraph img{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .secondary-paragraph {
+            margin-top: 40px;
+        }
+/*#endregion */
+
+/*#region paragraph SSL_handshake*/
+        .handshake-paragraph{
+            margin-bottom: 80px;
+        }
+        .handshake-paragraph img {
+            margin-top: 30px;
+        }
+        .handshake-paragraph li{
+            margin-top: 30px;
+        }
+        .handshake-paragraph a{
+            color: #d9ac26;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+        .handshake-paragraph a:hover{
+            color: #fff;
+        }
+/*#endregion */
+
+/*#region paragraph SSL_types*/
+        .types-paragraph{
+            margin-bottom: 80px;
+        }
+        .types-paragraph li{
+            margin-top: 40px;
+        }
+/*#endregion */
+
+
+/*#region footer*/
+footer {
+            background-color: #24241e;
+            color: #fff;
+            padding: 5px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer p {
+            margin: 5px;
+            margin-left: 40px;
+            margin-right: 40px;
+            font-size: 15px;
+        }
+
+
+/*#endregion */
+    </style>
+</head>
+<body>
+    <header>
+        <div id="main-menu">
+            <nav id="menu-area">
+                <ul>
+                    <li><a href="index.html">Начало</a></li>
+                    <li><a href="HTTPS_page.html">HTTPS</a></li>
+                    <li><a href="#">Статии</a>
+                        <ul class="submenu">
+                            <li><a href="CommunicationProtocols_page.html">Мрежови Протоколи</a></li>
+                            <li><a href="TCP_page.html">TCP/IP</a></li>
+                            <li><a href="SSLTLS_page.html">SSL/TLS</a></li>
+                            <li><a href="HTTP_page.html">HTTP</a></li>
+                            <li><a href="HTTPvsHTTPS_page.html">HTTP vs HTTPS</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="Resources_page.html">Източници</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div class="left">
+            <div class="roadmap">
+                <div class="line"></div>
+                <li class="roadmap-item"><a href="#SSLpage_SecurityCertificates"><span class="circle"></span>Сертификати за сигурност.</a></li>
+                <li class="roadmap-item"><a href="#SSLpage_WhatisSSL"><span class="circle"></span>Какво е SSL сертификат?</a></li>
+                <li class="roadmap-item"><a href="#SSLpage_Importance"><span class="circle"></span>Защо са важни SSL сертификатите?</a></li>
+                <li class="roadmap-item"><a href="#SSLpage_HowItWorks"><span class="circle"></span>Как работят SSL сертификатите</a></li>
+                <li class="roadmap-item"><a href="#SSLpage_SSLhandshake"><span class="circle"></span>SSL Handshake (ръкостискане)</a></li>
+                <li class="roadmap-item"><a href="#SSLpage_TypesOfSSL"><span class="circle"></span>Типове SSL сертификати</a></li>
+                <li class="roadmap-item"><a href="#SSLpage_CA"><span class="circle"></span>Какво представлява CA?</a></li>
+                <li class="roadmap-item"><a href="#SSLpage_GettingCertificate"><span class="circle"></span>Как да получите сертификат.</a></li>
+                <li class="roadmap-item"><a href="#SSLpage_TLSintroduction"><span class="circle"></span>Какво е Transport Layer Security (TLS)?</a></li>
+                <li class="roadmap-item"><a href="#SSLpage_HowTLSworks"><span class="circle"></span>Как работи TLS?</a></li>
+                <li class="roadmap-item"><a href="#SSLpage_SSLtoTLS"><span class="circle"></span>SSL към TLS Timeline</a></li>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div id="SSLpage_SecurityCertificates" class="seccert-paragraph">
+            <h1>Сертификати за сигурност. SSL/TLS protocols. Еволюция на сертификатите</h1>
+            <hr style="border: 1px solid #d9ac26">
+            <p class="seccert-paragraphp">Сертификатите играят централна роля в областта на интернет сигурността и целостта на данните. Подобно на документи за самоличност във физическия свят, сертификатите са онлайн еквивалент на документи за самоличност, като гарантират на потребителите, че уебсайтовете, с които взаимодействат, са истински, криптират чувствителни данни, за да защитят неприкосновеността на личния живот, и укрепват киберсигурността чрез предотвратяване на неоторизиран достъп. Сертификатите, като SSL/TLS сертификати, се използват за валидиране на самоличността на уебсайтове, криптиране на предаване на данни и защита срещу злонамерени заплахи. </p>
+        </div>
+        <div id="SSLpage_WhatisSSL" class="seccert-paragraph">
+            <h2>Какво е SSL сертификат?</h2>
+            <p>SSL означава Secure Sockets Layer, глобална стандартна технология за сигурност, която позволява криптирана комуникация между уеб браузър и уеб сървър.</p>
+            <p>SSL сертификатът е парче код, което се намира на уеб сървър. Използва се от милиони онлайн бизнеси и физически лица, за да се намали рискът чувствителна информация (напр. номера на кредитни карти, потребителски имена, пароли, имейли и др.) да бъде открадната от хакери и крадци на самоличност. SSL позволява частен/криптиран "разговор" само между двете желаещи страни. </p>
+            <p>SSL сертификатите могат да защитят както единичен домейн, така и множество уебсайтове с неограничен брой поддомейни. Освен това някои сертификати могат да защитават публичен IP адрес и да подписват електронно имейли и документи.</p>
+        </div>
+        <div id="SSLpage_Importance" class="seccert-paragraph">
+            <h2>Защо са важни SSL сертификатите?</h2>
+            <p>SSL/TLS сертификатите създават доверие сред потребителите на уебсайтовете. Бизнесите имат отговорност да пазят данните на своите потребители и затова инсталират SSL/TLS сертификати на уеб сървърите си.</p>
+            <div class="secondary-paragraph">
+                <h3>Защитава лични данни</h3>
+                <p>Браузърите валидират SSL/TLS сертификата на всеки уебсайт, за да започнат и поддържат сигурни връзки с уебсървъра. Технологията SSL/TLS помага за криптиране на всички комуникации между вашия браузър и уебсайта.</p>
+            </div>
+            <div class="secondary-paragraph">
+                <h3>Засилва доверието на клиентите</h3>
+                <p>Клиенти разбират значението и важността на поверителността и искат да имат доверие в уебсайтовете, които посещават. Уебсайтът с SSL/TLS защита има зелена иконка на катинар, която клиентите възприемат като сигурна.</p>
+            </div>
+            <div class="secondary-paragraph">
+                <h3>Поддържа съответствие с регулациите</h3>
+                <p>Някои бизнеси трябва да спазват индустриални регулации относно поверителността и защитата на данните. Например, банковите нституции, които поддържат плащания с кредитни карти трябва да спазват PCI DSS. PCI DSS е изискване на индустрията за осигуряване на сигурни онлайн транзакции, включително сигурност на уебсървъра с SSL/TLS сертификат.</p>
+            </div>
+        </div>
+        <div id="SSLpage_HowItWorks" class="seccert-paragraph">
+            <h2>Как работят SSL сертификатите </h2>
+            <p>SSL работи директно върху TCP, позволявайки на по-високите слоеве на протокола да останат непроменени, като същевременно осигурява сигурна връзка. </p>
+            <a href="TCP_page.html">Научете повече за TCP</a>
+            <p>Браузърът на потребителя се опитва да се свърже към уебсайт, защитен с SSL. До установяване на връзка между двете страни се изпращат съобщения за идентификация. Този процес се нарича SSL Handshake(ръкостискане). След свързване вече могат даните да се криптират и предават.</p>
+            <p>Използват се три ключа за настройка на SSL връзката: публичен, частен и сесиен ключ. Всичко, криптирано с публичния ключ, може да бъде декриптирано само с частния ключ и обратно. </p>
+            <p>Тъй като криптирането и декриптирането с частен и публичен ключ отнема много обработване, те се използват само по време на SSL Handshake(ръкостискане) за създаване на симетричен сесиен ключ. След установяване на защитена връзка сесийният ключ се използва за криптиране на всички предадени данни. </p>
+            <center>
+                <img src=".\assets\Sertificates\symmetricEncryption.png" width="550px" height="200px"/>
+            </center>
+            <p>Ако SSL сертификатът е конфигуриран правилно, атакуващите могат да видят само домейна и порта, към които сте свързани, и колко данни се предават. Те може да успеят да прекъснат връзката, но сървърът и потребителят ще могат да видят, че връзката е прекъсната от трета страна.</p>
+        </div>
+        <div id="SSLpage_SSLhandshake" class="handshake-paragraph">
+            <h3>SSL Handshake (ръкостискане)</h3>
+            <p>Комуникацията по SSL винаги започва с SSL ръкостискането. SSL ръкостискането позволява на браузъра да потвърди уеб сървъра, да получи публичния ключ и да установи сигурна връзка преди започването на реалния трансфер на данни. Процесът се разделя на няколко стъпки:</p>
+            <ol>
+                <li>"Client Hello" (Запитване на клиента): Сървърът комуникира с клиента чрез SSL. Това включва номера на SSL версията, настройките за криптиране и данни, специфични за сесията.</li>
+                <li>"Server Hello" (Запитване на сървъра): Сървърът отговаря с "server hello" съобщение. То включва номера на SSL версията на сървъра, настройките за криптиране, данни, специфични за сесията, SSL сертификат с публичен ключ и друга информация, която клиентът се нуждае за комуникация със сървъра чрез SSL.</li>
+                <li>Удостоверяване: Клиентът потвърждава SSL сертификата на сървъра от Сертификационния орган (CA - Certificate Authority) и аутентикира сървъра. Ако удостоверяването се провали, клиентът отказва SSL връзката и генерира грешка. Ако удостоверяването е успешно, те продължават на следващия етап.</li>
+                <li>Декриптиране: Клиентът създава сесионен ключ, криптира го с публичния ключ на сървъра и го изпраща на сървъра. Ако сървърът е поискал аутентикация на клиента (предимно при комуникация между сървъри), клиентът изпраща своя собствен сертификат на сървъра.</li>
+                <li>Криптиране с ключ за сеията: Сървърът декриптира сесионния ключ със собствения си частен ключ.</li>
+                <li>Създаване на ключове за сеията: И клиентът, и сървърът използват сесионния ключ, за да конфигурират споделен секретен ключ.</li>
+                <li>Клиентът е готов: След това клиентът изпраща криптирано "завършено" съобщение, използвайки споделения сесионен ключ. Това съобщение показва, че частта на клиента от ръкостискането е завършена.</li>
+                <li>Сървърът е готов: Накрая, сървърът изпраща криптирано "завършено" съобщение обратно на клиента с предварително уговорения споделен сесионен ключ, което означава края на частта на сървъра от ръкостискането.</li>
+                <li>Постигане на сигурно симетрично криптиране: След като SSL/TLS ръкостискането завърши, комуникацията между сървъра и клиента продължава, т.е. те започват да споделят файлове и съобщения, използвайки сесионните ключове (симетрично криптиране), предварително уговорени по време на ръкостискането.</li>
+            </ol>
+            <center>
+                <img src=".\assets\Sertificates\handshake.png" width="550px" height="400px"/>
+            </center>
+        </div>
+        <div id="SSLpage_TypesOfSSL" class="types-paragraph">
+            <h2>Типове SSL сертификати </h2>
+            <p>За да извлечете максимума от SSL, трябва да изберете правилния SSL сертификат. Различните SSL сертификати служат за различни цели и имат различни цени. Има три типа стандартни SSL сертификати:</p>
+            <ul>
+                <li>
+                    <div>
+                        <h4>Сертификат с проверка на домейна (Domain Validation - DV)</h4>
+                        <p>DV потвърждават, че лицето или организацията, поискала SSL сертификата, притежава или контролира името на домейна, което иска да защити. Процесът на DV е автоматизиран и не изисква никакви документи. Такова валидиране е подходящо за начални уебсайтове, блогове или фирми, които не обработват онлайн плащания. Можете да получите сертификат DV за по-малко от пет минути.</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h4>Сертификат с проверка на организацията (Organization Validation - OV)</h4>
+                        <p>По време на валидирането (OV), CA извършва допълнителни проверки, за да потвърди юридическото съществуване и физическото местоположение на кандидата за SSL. Само официално регистрирани компании могат да поискат OV сертификати след предоставяне на съответните документи на CA. OV SSL сертификатите са подходящи за платформи за електронна търговия, нестопански организации и средни предприятия. Можете да получите OV сертификат за 1-2 работни дни, при условие че всички данни са актуални.</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h4>Сертификат за разширена проверка (Extended Validation - EV)</h4>
+                        <p>Разширената проверка изисква подробен процес на проверка и предлага най-високата застраховка, че заявителят на сертификата е истински. Освен това EV сертификатите защитават от фишинг атаки и включват правното име на организацията в детайлите на сертификата. EV SSL е най-добрият избор за големи предприятия, банкови институции, финтех компании. Можете да получите EV сертификат в рамките на 1 до 3 работни.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="SSLpage_CA" class="seccert-paragraph">
+            <h2>Какво представлява сертификатен орган за SSL (CA)?</h2>
+            <p>Сертификационен орган (CA) е организация, която продава SSL/TLS сертификати на собствениците на уебсайтове, уеб хостинг компании или бизнеси. CA валидира домейна и данните на собственика преди издаването на SSL/TLS сертификата. За да бъде CA, организацията трябва да отговаря на конкретни изисквания, зададени от операционната система, браузърите или компаниите за мобилни устройства и да подаде заявление за включване като главен сертификатен орган. Това е важно за установяване на доверие сред интернет потребителите.</p>
+        </div>
+        <div id="SSLpage_GettingCertificate" class="seccert-paragraph">
+            <h2>Как да получите сертификат.</h2>
+            <p>За да получите сертификат, трябва да създадете заявка за подписване на сертификат (CSR) на вашия сървър. Този процес създава частен ключ и обществен ключ на сървъра. Файлът с CSR данни, който се изпраща на издателя на SSL сертификата (CA), съдържа обществения ключ. CA използва файла с CSR данни за създаване на структура на данните, която да съответства на вашия частен ключ, без да компрометира самия ключ. CA никога не вижда частния ключ.</p>
+            <p>След като получите SSL сертификата, го инсталирате на вашия сървър. Също така инсталирате и помеждинен сертификат, който установява достоверността на вашия SSL сертификат, като го свърже с основния сертификат на CA. Инструкциите за инсталиране и тестване на сертификата ще бъдат различни в зависимост от сървъра.</p>
+            <p>Най-важната част на SSL сертификата е, че той е дигитално подписан от доверен CA. Всеки може да създаде сертификат, но браузърите вярват само в сертификати, които идват от организация в техния списък с доверени CA. Браузърите се идват с предварително инсталиран списък с доверени CA, известен като Trusted Root CA store. </p>
+            <p>SSL сертификат, издаден от CA на организация и нейния домейн/уебсайт, потвърждава, че доверен трети лице е аутентикирало идентичността на организацията. Тъй като браузърът вярва на CA, сега браузърът вярва и в идентичността на организацията. Браузърът информира потребителя, че уебсайтът е сигурен.</p>
+            <p>Протоколите описват как трябва да се използват алгоритмите. В този случай SSL протоколът определя променливите на криптирането както за връзката, така и за предаваните данни.</p>
+            <a href="https://www.encryptionconsulting.com/education-center/ssl-tls-certificates/#h-how-to-set-ssl-certificates-in-windows ">Научете как да получите сертификат</a>
+        </div>
+        <div id="SSLpage_TLSintroduction" class="seccert-paragraph">
+            <h1>Какво е Transport Layer Security (TLS)?</h1>
+            <p>Transport Layer Security (TLS) е наследник на Secure Sockets Layer (SSL). Счита се за по-сигурна версия на SSL. Въпреки че новите сертификати използват TLS (RSA или ECC), все още е често срещано сертификатите за сигурност да се наричат SSL сертификати.</p>
+            <p>TLS е криптографски протокол, който осигурява край-до-край защита на данните, изпращани между приложения по Интернет. Той е познат най-вече на потребителите чрез използването му при защитено уеб сърфиране и по-специално чрез иконата на катинар, която се появява в уеб браузърите, когато се установи защитена сесия. Въпреки това, той може и наистина трябва да се използва и за други приложения като електронна поща, прехвърляне на файлове, видео/аудиоконферентни незабавни съобщения и глас по IP, както и интернет услуги като DNS и NTP.</p>
+            <a href="CommunicationProtocols_page.html#ComProt_WhatisIP">Научете повече за IP</a>
+        </div>
+        <div id="SSLpage_HowTLSworks" class="seccert-paragraph">
+            <h2>Как работи TLS?</h2>
+            <p>TLS обикновено работи над TCP с цел шифриране на Application Layer протоколите като HTTP, FTP, SMTP и IMAP, въпреки че може да се приложи и над UDP, DCCP и SCTP (например за VPN и приложения, използващи SIP).</p>
+            <p>TLS използва комбинация от симетрична и асиметрична криптография, тъй като това предоставя добър компромис между производителността и сигурността при предаване на данни.</p>
+            <p>Идентичността на комуникиращите страни може да бъде аутентицирана с помощта на криптиране с публичен ключ. Публичните ключове се разпространява, а частните ключове са известни само на собственика. Всеки може да шифрира съобщение с публичния ключ на получателя, но само неговият частен ключ може да го разшифрира. Аутентикацията може да се направи по избор, но обикновено се изисква за поне едната от страните (най-често сървъра).</p>
+            <p>Връзката е надеждна, тъй като цялостта на всяко предадено съобщение е проверена с помощта на message authentication code (MAC), предотвратявайки незабелязана загуба или манипулиране на данни. MAC е кратка информация, използвана за потвърждение, че съобщението идва от посочения подател и не е променено.</p>
+        </div>
+        <div id="SSLpage_SSLtoTLS" class="seccert-paragraph">
+            <h2>SSL към TLS Timeline</h2>
+            <p>SSL е разработен от Netscape през 90-те години за криптиране и защита на комуникации по интернет. SSL v1.0 никога не беше пуснат поради проблеми със сигурността. </p>
+            <p>През 1995 г. Netscape пуска SSL v2.0, но той все още имаше много недостатъци. </p>
+            <p>SSL v3.0, пуснат през 1996 г., адресира проблемите на SSL v2.0. Тази версия предлага невероятни подобрения и завинаги промени начина, по който работи интернет. Въпреки това от 2015 г. SSL 3.0 и предишните версии са спрени. </p>
+            <p>TLS е разработен от Internet Engineering Task Force (IETF) като подобрение на SSL; TLS v1.0, издаден през 1999 г. и базиран на SSL v3.0 с малки подобрения в сигурността, но достатъчно съществени, така че SSL v3.0 и TLS v1.0 не си взаимодействат.</p>
+            <p>TLS v1.1 излезе седем години по-късно през 2006 г и скоро след това беше заменен от TLS v1.2 през 2008 г. </p>
+            <p>TLS v1.3 беше финализиран през 2018 г. и след почти 30 итерации на IETF. TLS v1.3 прави значителни подобрения спрямо своите предшественици. Microsoft, Apple, Google, Mozilla, Cloudflare и Cisco са преминават към тази версия от март 2020 г. TLS v1.2 и TLS v1.3 сега са единствените все още налични SSL протоколи.</p>
+            <p>Така че в действителност TLS е просто по-нова версия на SSL. Повечето хора обаче все още казват SSL вместо TLS, SSL и TLS служат за една и съща цел, а именно защита на чувствителната информация по време на предаване, но криптографията, поддържана отдолу се е променила много от оригиналния SSL до най-новия TLS v1.3.</p>
+        </div>
+
+        <div class="arrow-container">
+            <a href="TCP_page.html" class="arrow-link">
+                <div class="arrow left-arrow"></div>
+                <span>Предишна страница</span>
+            </a>
+    
+            <a href="HTTP_page.html" class="arrow-link">
+                <span>Следваща страница</span>
+                <div class="arrow right-arrow"></div>
+            </a>
+        </div>
+    </div>
+    
+    
+    <footer>
+        <p>Христиана Алексанрова Христова</p>
+        <p>Факултетен номер: 121220041</p>
+        <p style="color: #d9ac26;">Курсов проект по Компютърни Мрежи</p>
+    </footer>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+    
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+    
+                if (targetElement) {
+                    const offset = 60; // Adjust this value based on your fixed header height
+                    const targetPosition = targetElement.offsetTop - offset;
+    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

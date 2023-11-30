@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTTP vs HTTPS</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #363430;
+            color: #cecece;
+            font-size: 17px;
+            font-family: 'Segoe UI';
+        }
+
+
+/*#region NAVBAR SECTION*/
+
+        header {
+            width: 100%;
+            background-color: rgb(71, 71, 71);
+            background-position: center center;
+            position: fixed;
+            z-index: 10;
+        }
+        header #main-menu {
+            background: rgb(71, 71, 71);
+            height: 60px;
+            line-height: 30px;
+            width: 100%;
+            border-bottom: solid #d9ac26 3px;
+        }
+        header nav#menu-area {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            width: 900px;
+        }
+        header nav#menu-area ul {
+            margin: 0;
+            padding: 0;
+        }
+        header nav#menu-area ul li {
+            float: left;
+            position: relative;
+            font-size: 15px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        header nav#menu-area ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            line-height: 60px;
+        }
+        header nav#menu-area ul li:hover>a {
+            background: rgb(100, 100, 100);
+        } 
+        header nav#menu-area ul li ul.submenu {
+            float: left;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            left: 0;
+            top: 60px;
+            background: rgb(71, 71, 71);
+            width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease-out, visibility 0.1s 0.1s linear;
+
+        }
+        header nav#menu-area ul li ul.submenu li {
+            border: none;
+            border-bottom: 2px solid #d9ac26;
+            clear: both;
+            margin-top: 15px;
+            padding: 0;
+            width: 200px;
+            transition: opacity 0.15s 0.15s ease-out, margin 0.3s 0.1s ease-out;
+        }
+        header nav#menu-area ul li:hover ul.submenu {
+            opacity: 1;
+            visibility: visible;
+        }
+        header nav#menu-area ul li:hover ul.submenu li {
+            margin-top: 0;
+            opacity: 1;
+        }
+
+/*#endregion */
+
+
+/*#region MAIN CONTAINERS SECTION*/
+
+        .container {
+            /*display: flex;*/
+            position: fixed;
+            top: 60px;
+            width: 100%;
+            overflow-y: auto;
+            max-height: 100vh;
+            background-color: #363430;
+        }
+
+        .left {
+            width: 450px;
+            background-color: #363430;
+            padding-right: 40px;
+            padding-left: 40px;
+            padding-top: 30px;
+            box-sizing: border-box;
+            position: relative;
+            font-size: 19px;
+        }
+        .left li {
+            margin-top: 20px;
+        }
+        .roadmap {
+            position: relative;
+        }
+        .roadmap-item {
+            list-style: none;
+            margin: 10px 0;
+            position: relative;
+        }
+        .roadmap-item a {
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+        .roadmap-item a:hover {
+            color: #d9ac26;
+        }
+        .circle {
+            width: 17px;
+            height: 17px;
+            background-color: #363430;
+            border: 2px solid #d9ac26;
+            border-radius: 50%;
+            margin-right: 20px;
+            box-sizing: border-box;
+        }
+        .roadmap-item a:hover .circle {
+            background-color: #d9ac26;
+        }
+        .line {
+            position: absolute;
+            top: 0;
+            left: 2.3%;
+            width: 2px;
+            height: 100%;
+            background-color: #d9ac26;
+            transform: translateX(-50%);
+        }
+
+
+        .right {
+            /*flex: 1; */
+            background-color: #363430;
+            width: calc(100vw - 800px);
+            position: absolute;
+            top: 60px;
+            padding-bottom: 200px;
+            margin-left: 520px;
+            overflow-y: auto;
+            font-family: 'Segoe UI';
+
+        }
+
+/*#endregion */
+
+
+/*#region arrow*/
+        .arrow-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px;
+            padding-top: 50px;
+        }
+
+        .arrow {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            display: inline-block;
+        }
+
+        .left-arrow {
+            border-width: 10px 15px 10px 0;
+            border-color: transparent #d9ac26 transparent transparent;
+            margin-right: 10px;
+            margin-top: 2px;
+        }
+
+        .right-arrow {
+            border-width: 10px 0 10px 15px;
+            border-color: transparent transparent transparent #d9ac26;
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+
+        .arrow-link {
+            color: #d9ac26;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+        }
+
+        .arrow-link:hover {
+            color: #fff;
+        }
+/*#endregion */
+
+
+/*#region paragraph ComProt_Introduction*/
+        .history-paragraph{
+            margin-bottom: 80px;
+        }
+        .history-paragraph img {
+            margin-top: 30px;
+            border-radius: 8px;
+        }
+        .history-paragraph a{
+            color: #d9ac26;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+        .history-paragraph a:hover{
+            color: #fff;
+        }
+        .history-paragraph li {
+            margin-top: 20px;
+        }
+        .subtitle {
+            margin-top: 50px;
+        }
+        .subparagraph {
+            margin-top: 40px;
+        }
+        .moredifferences-paragraph{
+            margin-bottom: 80px;
+        }
+        .moredifferences-paragraph li{
+            margin-bottom: 10px;
+        }
+/*#endregion */
+
+
+
+/*#region footer*/
+footer {
+            background-color: #24241e;
+            color: #fff;
+            padding: 5px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer p {
+            margin: 5px;
+            margin-left: 40px;
+            margin-right: 40px;
+            font-size: 15px;
+        }
+
+
+/*#endregion */
+    </style>
+</head>
+<body>
+    <header>
+        <div id="main-menu">
+            <nav id="menu-area">
+                <ul>
+                    <li><a href="index.html">Начало</a></li>
+                    <li><a href="HTTPS_page.html">HTTPS</a></li>
+                    <li><a href="#">Статии</a>
+                        <ul class="submenu">
+                            <li><a href="CommunicationProtocols_page.html">Мрежови Протоколи</a></li>
+                            <li><a href="TCP_page.html">TCP/IP</a></li>
+                            <li><a href="SSLTLS_page.html">SSL/TLS</a></li>
+                            <li><a href="HTTP_page.html">HTTP</a></li>
+                            <li><a href="HTTPvsHTTPS_page.html">HTTP vs HTTPS</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="Resources_page.html">Източници</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div class="left">
+            <div class="roadmap">
+                <div class="line"></div>
+                <li class="roadmap-item"><a href="#HTTPvsHTTPSpage_History"><span class="circle"></span>История на HTTP и HTTPS</a></li>
+                <li class="roadmap-item"><a href="#HTTPvsHTTPSpage_Differences"><span class="circle"></span>Rазликата между HTTP и HTTPS</a></li>
+                <li class="roadmap-item"><a href="#HTTPvsHTTPSpage_MoreDifferences"><span class="circle"></span>Още разлики</a></li>
+                <li class="roadmap-item"><a href="#HTTPvsHTTPSpage_MovingToHTTPS"><span class="circle"></span>Прехвърлне на уебсайт към HTTPS?</a></li>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div id="HTTPvsHTTPSpage_History" class="history-paragraph">
+            <h1>История на HTTP и HTTPS</h1>
+            <hr style="border: 1px solid #d9ac26">
+            <p class="subtitle">Историята на HTTP (Hypertext Transfer Protocol) и на неговата сигурна версия HTTPS е свързана с растежа и еволюцията на World Wide Web. HTTP, въведен от Тим Бърнърс-Лий през 1991 г., означава революционен начин, по който информацията се споделя и достъпва онлайн. Първоначално HTTP позволява извличането на текстови документи, свързани чрез хипертекст, поставяйки основите за съвременния уеб.</p>
+            <p>През 1990-те години настъпи огромно нарастване на уеба, с разрастването на мултимедийното съдържание. Въпреки този нов фронт, със себе си донесе и притеснения за сигурността. За да се справи с тези проблеми, през 1994 г. бе въведено HTTPS. HTTPS включи SSL (Secure Sockets Layer), за криптиране на данните по време на пренос, гарантирайки сигурна комуникация между браузърите и сървърите. По-късно SSL се разви в TLS (Transport Layer Security), с излизането на TLS 1.0 през 1999 г.</p>
+            <a href="SSLTLS_page.html">Научете повече за SSL и TLS</a>
+            <p>HTTPS придоби по-голямо значение с настъпването на електронната търговия и онлайн банкирането. През годините той стана стандарт за сигурно използване на интернет.</p>
+            <p>Днес HTTP/2 и HTTP/3 продължават да подобряват уеб производителността, докато HTTPS се укрепва още повече за защита на поверителността и сигурността.</p>
+        </div>
+        <div id="HTTPvsHTTPSpage_Differences" class="history-paragraph">
+            <h2>Каква е разликата между HTTP и HTTPS?</h2>
+            <p>HTTPS не е отделен протокол от HTTP. Просто използва криптиране TLS/SSL над протокола HTTP. </p>
+            <h3 class="subparagraph">Компоненти на протокола HTTP:</h3>
+            <ul>
+                <li>HTTP клиент: HTTP клиентът обикновено е уеб браузърът, който изпраща HTTP заявка към сървъра. Тази заявка включва информация като желаното действие (GET, POST и др.), параметрите на URL и заглавки, предоставящи допълнителна информация.</li>
+                <li>HTTP сървър: HTTP сървърът получава заявката на клиента, обработва я и изпраща обратно HTTP отговор. Отговорът включва статусен код, указващ успешността или неуспешността на заявката, заглавки, предоставящи метаданни, и обикновено исканите данни.</li>
+                <li>HTTP заявка и отговор: Това е същността на HTTP комуникацията. Клиентът изпраща заявка към сървъра, който я обработва и изпраща отговор. И двете, заявка и отговор, използват добре дефинирани формати с различни части като начало, заглавки и тяло.</li>
+                <li>URL: Universal Resource Locator посочва местоположението на ресурса в интернет, който клиентът иска да достъпи. Тя включва компоненти като протокол (HTTP в този случай), хост, порт, път и параметри за заявка.</li>
+                <li>Методи: HTTP използва методи като GET, POST, PUT, DELETE и други, за да определи желаното действие, което следва да бъде извършено върху посочения ресурс.</li>
+            </ul>
+            <a href="HTTP_page.html">Научете повече за HTTP</a>
+            <h3 class="subparagraph">Компоненти на HTTPS</h3>
+            <ul>
+                <li>HTTP слой: Както HTTP, HTTPS също използва HTTP за комуникация.</li>
+                <li>SSL/TLS слой: HTTPS добавя слой на протокола SSL/TLS към протокола HTTP, предоставяйки криптиране на данните по време на предаването. </li>
+                <li>Secure Sockets: Тези сокети осигуряват сигурен канал, където данните се криптират преди изпращане и се разкриват при получаване.</li>
+                <li>Дигитални сертификати: HTTPS използва дигитални сертификати за удостоверяване на сървъра. Тези сертификати се издават от доверен Certificate Authority (CA) и съдържат информация за уебсайта, публичния ключ и подпис на CA.</li>
+                <li>Алгоритми за криптиране: HTTPS използва симетрични и асиметрични алгоритми за криптиране, заедно с криптографски хеш функции. Често срещани алгоритми включват RSA за размяна на ключове, AES за криптиране на данни и SHA за удостоверяване на съобщенията.</li>
+            </ul>
+            <a href="HTTPS_page.html">Научете повече за HTTPS</a>
+        </div>
+        <div id="HTTPvsHTTPSpage_MoreDifferences" class="moredifferences-paragraph">
+            <h3>Още разлики</h3>
+            <ul>
+                <li>HTTP URL-ите започват с http://, а HTTPS URL-ите започват с https://.</li>
+                <li>HTTP нама механизъм за сигурност</li>
+                <li>HTTP не изисква потвърждение на домейна, докато HTTPS изисква поне потвърждение на домейна.</li>
+                <li>HTTP работи в Application Layer, докато HTTPS работи в Transport Layer.</li>
+                <li>HTTP по подразбиране работи на порт 80, докато HTTPS по подразбиране на порт 443.</li>
+                <li>HTTP предава данни в обикновен текст, докато HTTPS предава данни в криптиран текст.</li>
+                <li>HTTP е по-бърз, в сравнение с HTTPS, тъй като HTTPS изисква изчислителна мощност за криптиране на комуникационния канал.</li>
+            </ul>
+        </div>
+        <div id="HTTPvsHTTPSpage_MovingToHTTPS" class="history-paragraph">
+            <h2>Как да прехвърлите уебсайт към използване на HTTPS?</h2>
+            <p>HTTPS се превърна в стандарт за уебсайтовете на организациите, които търсят начин да защитят данните на своите потребители.</p>
+            <ol>
+                <li>Направете резервно копие на уебсайта: Направете резервно копие на уебсайта си преди да направите промени в него. Ако използвате публичен хост, проверете какви опции за резервно копие предлагат.</li>
+                <li>Купете и инсталирайте SSL сертификат: SSL сертификат удостоверява идентичността на уебсайта и позволява криптирана комуникация между браузъра и уеб сървъра. Сертификати на ниво за домейн могат да бъдат настроени бързо и са подходящи за малки фирми с ограничен бюджет. Сертификати за организация могат да изискват няколко дни за верификация, но след като бъдат установени, те показват името на компанията и домейна директно в браузъра. </li>
+                <li>Настройте вътрешните и външни връзки към HTTPS: Уверете се, че всички връзки към уебсайта се сменят от HTTP на HTTPS. Ако имате само няколко страници, това може да стане ръчно. Но ако имате по-голям сайт, можете да разгледате автоматизирани опции. </li>
+                <li>Проверете библиотеките: Ако имате по-голям, по-сложен сайт, проверете библиотеките, които той използва.</li>
+                <li>Създайте 301 пренасочване: Потребителите ще бъдат изпратени незабавно към правилната HTTPS версия на вашия сайт, вместо да кликват върху връзка, която ги води никъде.</li>
+                <li>Актуализирайте SSL на CDN: Тази стъпка е необходима само ако използвате мрежа за доставка на съдържание (content delivery network - CDN) за уебсайта. CDN съхранява копия на всеки от уебсайтовете на сървъри по целия свят и предоставя заявени страници, използвайки сървъра, най-близък до потребителя.</li>
+            </ol>
+        </div>
+
+        <div class="arrow-container">
+            <a href="HTTPS_page.html" class="arrow-link">
+                <div class="arrow left-arrow"></div>
+                <span>Предишна страница</span>
+            </a>
+    
+            <a href="index.html" class="arrow-link">
+                <span>Начало</span>
+                <div class="arrow right-arrow"></div>
+            </a>
+        </div>
+    </div>
+    
+    
+    <footer>
+        <p>Христиана Алексанрова Христова</p>
+        <p>Факултетен номер: 121220041</p>
+        <p style="color: #d9ac26;">Курсов проект по Компютърни Мрежи</p>
+    </footer>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+    
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+    
+                if (targetElement) {
+                    const offset = 60; // Adjust this value based on your fixed header height
+                    const targetPosition = targetElement.offsetTop - offset;
+    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

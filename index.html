@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Начало</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #363430;
+            color: #cecece;
+            font-size: 17px;
+            font-family: 'Segoe UI';
+        }
+
+
+/*#region NAVBAR SECTION*/
+
+        header {
+            width: 100%;
+            background-color: rgb(71, 71, 71);
+            background-position: center center;
+            position: fixed;
+            z-index: 10;
+        }
+        header #main-menu {
+            background: rgb(71, 71, 71);
+            height: 60px;
+            line-height: 30px;
+            width: 100%;
+            border-bottom: solid #d9ac26 3px;
+        }
+        header nav#menu-area {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            width: 900px;
+        }
+        header nav#menu-area ul {
+            margin: 0;
+            padding: 0;
+        }
+        header nav#menu-area ul li {
+            float: left;
+            position: relative;
+            font-size: 15px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        header nav#menu-area ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            line-height: 60px;
+        }
+        header nav#menu-area ul li:hover>a {
+            background: rgb(100, 100, 100);
+        } 
+        header nav#menu-area ul li ul.submenu {
+            float: left;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            left: 0;
+            top: 60px;
+            background: rgb(71, 71, 71);
+            width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease-out, visibility 0.1s 0.1s linear;
+
+        }
+        header nav#menu-area ul li ul.submenu li {
+            border: none;
+            border-bottom: 2px solid #d9ac26;
+            clear: both;
+            margin-top: 15px;
+            padding: 0;
+            width: 200px;
+            transition: opacity 0.15s 0.15s ease-out, margin 0.3s 0.1s ease-out;
+        }
+        header nav#menu-area ul li:hover ul.submenu {
+            opacity: 1;
+            visibility: visible;
+        }
+        header nav#menu-area ul li:hover ul.submenu li {
+            margin-top: 0;
+            opacity: 1;
+        }
+
+/*#endregion */
+
+
+/*#region MAIN CONTAINERS SECTION*/
+
+        .container {
+            /*display: flex;*/
+            position: fixed;
+            top: 60px;
+            width: 100%;
+            overflow-y: auto;
+            max-height: 100vh;
+            background-color: #363430;
+        }
+
+        .left {
+            width: 450px;
+            background-color: #363430;
+            padding: 40px;
+            box-sizing: border-box;
+            position: relative;
+            font-size: 19px;
+        }
+
+        .right {
+            /*flex: 1; */
+            background-color: #363430;
+            width: calc(100vw - 780px);
+            position: absolute;
+            top: 60px;
+            padding-bottom: 200px;
+            margin-left: 400px;
+            overflow-y: auto;
+        }
+
+/*#endregion */
+
+        .paragraph {
+            margin-bottom: 60px;
+        }
+
+
+/*#region arrow*/
+
+        .arrow-container-first {
+            display: flex;
+            align-items: end;
+            margin-left: 500px;
+            padding-top: 130px;
+        }
+        .arrow-container{
+            display: flex;
+            align-items: end;
+            margin-left: 500px;
+            padding-top: 20px;
+        }
+        .arrow {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            display: inline-block;
+        }
+
+        .left-arrow {
+            border-width: 10px 15px 10px 0;
+            border-color: transparent #d9ac26 transparent transparent;
+            margin-right: 10px;
+            margin-top: 2px;
+        }
+
+        .right-arrow {
+            border-width: 10px 0 10px 15px;
+            border-color: transparent transparent transparent #d9ac26;
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+
+        .arrow-link {
+            color: #d9ac26;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+        }
+
+        .arrow-link:hover {
+            color: #fff;
+        }
+/*#endregion */
+
+
+
+/*#region footer*/
+        footer {
+            background-color: #24241e;
+            color: #fff;
+            padding: 5px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer p {
+            margin: 5px;
+            margin-left: 40px;
+            margin-right: 40px;
+            font-size: 15px;
+        }
+
+
+/*#endregion */
+
+    </style>
+</head>
+<body>
+    <header>
+        <div id="main-menu">
+            <nav id="menu-area">
+                <ul>
+                    <li><a href="index.html">Начало</a></li>
+                    <li><a href="HTTPS_page.html">HTTPS</a></li>
+                    <li><a href="#">Статии</a>
+                        <ul class="submenu">
+                            <li><a href="CommunicationProtocols_page.html">Мрежови Протоколи</a></li>
+                            <li><a href="TCP_page.html">TCP/IP</a></li>
+                            <li><a href="SSLTLS_page.html">SSL/TLS</a></li>
+                            <li><a href="HTTP_page.html">HTTP</a></li>
+                            <li><a href="HTTPvsHTTPS_page.html">HTTP vs HTTPS</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="Resources_page.html">Източници</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div class="left">
+            
+        </div>
+    </div>
+    <div class="right">
+       <div class="paragraph">
+            <h1>Светът на мрежовите протоколи</h1>
+            <hr style="border: 1px solid #d9ac26; margin-bottom: 40px;">
+            <p>Мрежовите протоколи формират основата на дигиталната комуникация, предоставяйки стандартизиран набор от правила и конвенции за устройства за обмен на информация. Работейки на различни нива от OSI модела, тези протоколи осигуряват надеждно и ефективно предаване на данни през различни мрежи. От протоколи на ниво връзка, управляващи физическите връзки до протоколи на ниво приложение, диктуващи потребителските взаимодействия, всеки слой допринася за безпроблемното функциониране на Интернет.</p>
+       </div>
+       <div class="paragraph">
+            <h2>TCP/IP</h2>
+            <hr style="border: 1px solid #d9ac26">
+            <p>Протоколът за контрол на предаването (Transmission Control Protocol  ) и интернет протоколът (Internet Protocol) работят заедно, за улесняване на комуникацията от устройство до устройство. TCP се намира на транспортния слой и наблюдава установяването, поддръжката и прекратяването на надеждни връзки. Едновременно с това IP, работещ на мрежовия слой, управлява адресирането и маршрутизирането на пакети данни в глобалната мрежова инфраструктура. Тази комбинация формира основата за по-голямата част от интернет комуникацията.</p>
+       </div>
+       <div class="paragraph">
+            <h2>SSL и сертификати</h2>
+            <hr style="border: 1px solid #d9ac26">
+            <p>Secure Sockets Layer (SSL) и сертификатът, който идва след него - Transport Layer Security (TLS), са криптографски протоколи, предназначени да осигурят предаването на данни през компютърна мрежа. Използвайки асиметрични и симетрични алгоритми за криптиране, SSL/TLS протоколите гарантират поверителността на данните, целостта и удостоверяването. дигиталните сертификати, издадени от Сертифициращи органи (CA), потвърждават самоличността на участващите в комуникацията, създавайки защитен обмен на данни. </p>
+       </div>
+       <div class="paragraph">
+            <h2>HTTP (Протокол за трансфер на хипертекст)</h2>
+            <hr style="border: 1px solid #d9ac26">
+            <p>Протоколът за трансфер на хипертекст (HTTP) управлява комуникацията между уеб клиент и сървър. Работейки на приложния слой на модела OSI, HTTP използва модел заявка-отговор, за да позволи прехвърлянето на хипертекст, обикновено под формата на HTML документи. Той определя методи за взаимодействие, как се структурират и обменят съобщенията. Разбирането на HTTP е фундаментално за разбирането на динамиката на обмен на информация и уеб базираните услуги.</p>
+       </div>
+       <div class="paragraph">
+            <h2>HTTPS (Hypertext Transfer Protocol Secure)</h2>
+            <hr style="border: 1px solid #d9ac26">
+            <p>HTTPS е разширение на HTTP, допълнено със защитен слой, осигурен от SSL/TLS криптиране. Този допълнителен протокол за сигурност гарантира, че данните, обменени между браузъра на потребителя и уебсайта, остават поверителни и непроменени по време на предаване. Внедряването на HTTPS намалява риска от подслушване, атаки тип "човек по средата" и подправяне на данни, като по този начин укрепва сигурността на уеб комуникацията.</p>
+            <p>Разделението между HTTP и HTTPS подчертава еволюцията на уеб комуникацията в контекста на сигурността. HTTP, традиционният протокол, работи по некриптирани канали, което прави данните уязвими за прихващане и манипулиране. В контраст, HTTPS въвежда криптиране, защитавайки чувствителна информация по време на пренос. Това разделение изяснява оперативните несъответствия между двата протокола, като подчертава необходимостта от преминаване към защитена уеб среда.</p>
+        </div>
+
+
+        <div>
+            <div class="arrow-container-first">
+                <a href="CommunicationProtocols_page.html" class="arrow-link">
+                    <span>Следваща страница</span>
+                    <div class="arrow right-arrow"></div>
+                </a>
+            </div>
+            <div class="arrow-container">
+                <a href="Resources_page.html" class="arrow-link">
+                    <span>Ресурси</span>
+                    <div class="arrow right-arrow"></div>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+    
+    
+    <footer>
+        <p>Христиана Алексанрова Христова</p>
+        <p>Факултетен номер: 121220041</p>
+        <p style="color: #d9ac26;">Курсов проект по Компютърни Мрежи</p>
+    </footer>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+    
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+    
+                if (targetElement) {
+                    const offset = 60; // Adjust this value based on your fixed header height
+                    const targetPosition = targetElement.offsetTop - offset;
+    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

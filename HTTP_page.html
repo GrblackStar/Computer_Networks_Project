@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTTP Въведение</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #363430;
+            color: #cecece;
+            font-size: 17px;
+            font-family: 'Segoe UI';
+        }
+
+
+/*#region NAVBAR SECTION*/
+
+        header {
+            width: 100%;
+            background-color: rgb(71, 71, 71);
+            background-position: center center;
+            position: fixed;
+            z-index: 10;
+        }
+        header #main-menu {
+            background: rgb(71, 71, 71);
+            height: 60px;
+            line-height: 30px;
+            width: 100%;
+            border-bottom: solid #d9ac26 3px;
+        }
+        header nav#menu-area {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            width: 900px;
+        }
+        header nav#menu-area ul {
+            margin: 0;
+            padding: 0;
+        }
+        header nav#menu-area ul li {
+            float: left;
+            position: relative;
+            font-size: 15px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        header nav#menu-area ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            line-height: 60px;
+        }
+        header nav#menu-area ul li:hover>a {
+            background: rgb(100, 100, 100);
+        } 
+        header nav#menu-area ul li ul.submenu {
+            float: left;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            left: 0;
+            top: 60px;
+            background: rgb(71, 71, 71);
+            width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease-out, visibility 0.1s 0.1s linear;
+
+        }
+        header nav#menu-area ul li ul.submenu li {
+            border: none;
+            border-bottom: 2px solid #d9ac26;
+            clear: both;
+            margin-top: 15px;
+            padding: 0;
+            width: 200px;
+            transition: opacity 0.15s 0.15s ease-out, margin 0.3s 0.1s ease-out;
+        }
+        header nav#menu-area ul li:hover ul.submenu {
+            opacity: 1;
+            visibility: visible;
+        }
+        header nav#menu-area ul li:hover ul.submenu li {
+            margin-top: 0;
+            opacity: 1;
+        }
+
+/*#endregion */
+
+/*#region MAIN CONTAINERS SECTION*/
+
+        .container {
+            /*display: flex;*/
+            position: fixed;
+            top: 60px;
+            width: 100%;
+            overflow-y: auto;
+            max-height: 100vh;
+            background-color: #363430;
+        }
+        
+        .left {
+            width: 450px;
+            background-color: #363430;
+            padding-left: 40px;
+            padding-top: 30px;
+            padding-right: 40px;
+            box-sizing: border-box;
+            position: relative;
+            font-size: 19px;
+        }
+        .left li {
+            margin-top: 15px;
+        }
+        .roadmap {
+            position: relative;
+        }
+        .roadmap-item {
+            list-style: none;
+            margin: 10px 0;
+            position: relative;
+        }
+        .roadmap-item a {
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+        .roadmap-item a:hover {
+            color: #d9ac26;
+        }
+        .circle {
+            width: 17px;
+            height: 17px;
+            background-color: #363430;
+            border: 2px solid #d9ac26;
+            border-radius: 50%;
+            margin-right: 20px;
+            box-sizing: border-box;
+        }
+        .roadmap-item a:hover .circle {
+            background-color: #d9ac26;
+        }
+        .line {
+            position: absolute;
+            top: 0;
+            left: 2.3%;
+            width: 2px;
+            height: 100%;
+            background-color: #d9ac26;
+            transform: translateX(-50%);
+        }
+
+        .right {
+            /*flex: 1; */
+            background-color: #363430;
+            width: calc(100vw - 800px);
+            position: absolute;
+            top: 60px;
+            padding-bottom: 200px;
+            margin-left: 520px;
+            overflow-y: auto;
+            font-family: 'Segoe UI';
+        }
+
+/*#endregion */
+
+/*#region arrow*/
+        .arrow-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px;
+            padding-top: 130px;
+        }
+
+        .arrow {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            display: inline-block;
+        }
+
+        .left-arrow {
+            border-width: 10px 15px 10px 0;
+            border-color: transparent #d9ac26 transparent transparent;
+            margin-right: 10px;
+            margin-top: 2px;
+        }
+
+        .right-arrow {
+            border-width: 10px 0 10px 15px;
+            border-color: transparent transparent transparent #d9ac26;
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+
+        .arrow-link {
+            color: #d9ac26;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+        }
+
+        .arrow-link:hover {
+            color: #fff;
+        }
+/*#endregion */
+
+
+/*#region paragraph*/
+        .introduction-paragraph{
+            margin-bottom: 80px;
+        }
+        .introduction-paragraph img {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .subtitle {
+            margin-top: 50px;
+        }
+        .introduction-paragraph a{
+            color: #d9ac26;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+        .introduction-paragraph a:hover{
+            color: #fff;
+        }
+        .clientsservers-paragraph{
+            margin-bottom: 30px;
+        }
+        .list-paragraph {
+            margin-bottom: 80px;
+        }
+        .list-paragraph li{
+            margin-top: 40px;
+        }
+/*#endregion */
+
+/*#region table*/
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 40px;
+        }
+        table, th, td {
+            border: 2px solid #d9ac26;
+            padding: 5px;
+        }
+/*#endregion*/
+
+
+/*#region footer*/
+footer {
+            background-color: #24241e;
+            color: #fff;
+            padding: 5px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer p {
+            margin: 5px;
+            margin-left: 40px;
+            margin-right: 40px;
+            font-size: 15px;
+        }
+
+
+/*#endregion */
+
+    </style>
+</head>
+<body>
+    <header>
+        <div id="main-menu">
+            <nav id="menu-area">
+                <ul>
+                    <li><a href="index.html">Начало</a></li>
+                    <li><a href="HTTPS_page.html">HTTPS</a></li>
+                    <li><a href="#">Статии</a>
+                        <ul class="submenu">
+                            <li><a href="CommunicationProtocols_page.html">Мрежови Протоколи</a></li>
+                            <li><a href="TCP_page.html">TCP/IP</a></li>
+                            <li><a href="SSLTLS_page.html">SSL/TLS</a></li>
+                            <li><a href="HTTP_page.html">HTTP</a></li>
+                            <li><a href="HTTPvsHTTPS_page.html">HTTP vs HTTPS</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="Resources_page.html">Източници</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div class="left">
+            <div class="roadmap">
+                <div class="line"></div>
+                <li class="roadmap-item"><a href="#HTTPpage_Introduction"><span class="circle"></span>Въведение в HTTP</a></li>
+                <li class="roadmap-item"><a href="#HTTPpage_HowItWorks"><span class="circle"></span>Как работи HTTP?</a></li>
+                <li class="roadmap-item"><a href="#HTTPpage_ClientsServers"><span class="circle"></span>Клиенти и сървъри</a></li>
+                <li class="roadmap-item"><a href="#HTTPpage_Client"><span class="circle"></span>Какво е HTTP клиент?</a></li>
+                <li class="roadmap-item"><a href="#HTTPpage_Server"><span class="circle"></span>Какво е уеб сървър?</a></li>
+                <li class="roadmap-item"><a href="#HTTPpage_ProxyServer"><span class="circle"></span>Какво е прокси сървър?</a></li>
+                <li class="roadmap-item"><a href="#HTTPpage_Header"><span class="circle"></span>Какво е HTTP заглавие (Header)?</a></li>
+                <li class="roadmap-item"><a href="#HTTPpage_Request"><span class="circle"></span>Какво е HTTP заявка (request)?</a></li>
+                <li class="roadmap-item"><a href="#HTTPpage_Response"><span class="circle"></span>Какво е HTTP отговор (response)?</a></li>
+                <li class="roadmap-item"><a href="#HTTPpage_StatusCode"><span class="circle"></span>Статус код</a></li>
+                <li class="roadmap-item"><a href="#HTTPpage_Identification"><span class="circle"></span>Идентификация на потребител и сървър</a></li>
+                <li class="roadmap-item"><a href="#HTTPpage_HTTPandTCP"><span class="circle"></span>Как HTTP и TCP работят заедно?</a></li>
+                <li class="roadmap-item"><a href="#HTTPpage_Pros"><span class="circle"></span>Предимства на HTTP</a></li>
+                <li class="roadmap-item"><a href="#HTTPpage_Cons"><span class="circle"></span>Недостатъци на HTTP</a></li>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div id="HTTPpage_Introduction" class="introduction-paragraph">
+            <h1>Въведение в HTTP</h1>
+            <hr style="border: 1px solid #d9ac26">
+            <h2 class="subtitle">Какво е HTTP?</h2>
+            <p>HTTP означава HyperText Transfer Protocol. Представлява протокол от по-високо ниво, който е изграден върху TCP HTTP е специално проектиран за предаване на данни през World Wide Web (или Интернет).</p>
+            <a href="TCP_page.html">Научете повече за TCP/IP</a>
+            <p>HTTP е протокол на базата заявка-отговор (request-response), който позволява на потребителите да обменят данни и да прехвърлят хипертекст. Протоколът остава едно от основните средства за използване на Интернет и предоставя на потребителите начин да взаимодействат с уеб ресурси като HTML файлове чрез предаване на хипертекстови съобщения между клиенти (като уеб браузър като Chrome) и сървър. </p>
+            <p>HTTP дефинира как данните трябва да бъдат форматирани и предавани между уеб сървъри и клиенти. Определя как трябва да се заявят и извлекат уеб страници и други уеб ресурси като изображения и видеоклипове.</p>
+            <p>Този протокол се нарича HyperText Transfer Protocol (Протокол за прехвърляне на хипертекст) поради ефективността си, която ни позволява да го използваме в среда, където има бързи преходи от един документ към друг.</p>
+            <p>HTTP е подобен на FTP, тъй като също така прехвърля файлове от един хост към друг хост. Но HTTP е по-прост от FTP, тъй като HTTP използва само една връзка, т.е. без управляваща връзка за прехвърляне на файловете. Съобщенията се предават незабавно.</p>
+            <p>Също така е отговорен за задачи като обработка на "бисквитки" (които се използват за съхранение на информация за сесията на преглеждане) и управление на удостоверяването (което се използва за потвърждение на вашата идентичност при достъп до определени уебсайтове).</p>
+        </div>
+        <div id="HTTPpage_HowItWorks" class="introduction-paragraph">
+            <h2>Как работи HTTP?</h2>
+            <p>HTTP се намира на Слой 7 (Application Layer) OSI модела и работи като прехвърля данни с използване на TCP/IP връзка.</p>
+            <center>
+                <img src=".\assets\HTTTP\HTTPplaceInWeb.png" width="500px" height="350px"/>
+            </center>
+            <p>Клиентите и сървърите на HTTP комуникират чрез съобщения за заявка и отговор. Трите основни видове съобщения в HTTP са GET, POST и HEAD.</p>
+            <ul>
+                <li><u>GET</u> – Извлича информация от сървъра. Това не променя данните.</li>
+                <li><u>HEAD</u> – Това е като GET, но сървърът ще върне само Status-Line и заглавките. Тялото на съобщението не се връща</li>
+                <li><u>POST</u> – Изпраща данни до сървъра. Често се използва, когато се попълва форма на уеб страница</li>
+                <li><u>PUT</u> – Също изпраща данни, но по-често се използва за качване на файлове</li>
+                <li><u>DELETE </u>– Премахва файл от сървъра</li>
+                <li><u>CONNECT</u> – Създава тунел между клиента и сървъра. Често се използва, за да позволи криптиране (HTTPS) през некриптиран HTTP проксита.</li>
+                <li><u>OPTIONS</u> – Използва се от клиента, за да види какви опции и методи поддържа сървърът</li>
+                <li><u>TRACE</u> – Използва се за отстраняване на неизправности по време на разработка. Задава входа обратно на клиента в тялото на съобщението</li>
+            </ul>
+            <center>
+                <img src=".\assets\HTTTP\requestResponse.png" width="600px" height="200px"/>
+            </center>
+            <p>HTTP е система без състояние (stateless). Това означава, че, за разлика от други протоколи за предаване на файлове като FTP, HTTP връзката се прекъсва след като заявката приключи. И така, след като уеб браузъра изпрати заявката и сървърът отговори със страницата, връзката се затваря. Това означава, че клиентът и сървърът не са задължени да проследяват състоянието на всяка връзка в ход.</p>
+        </div>
+        <div id="HTTPpage_ClientsServers" class="clientsservers-paragraph">
+            <h2>Клиенти и сървъри</h2>
+            <p>HTTP използва концепцията за клиент и сървър. Цялата идея на HTTP е да дефинира как клиентът ще формира заявка и как сървърът ще реагира.</p>
+            <p>Клиентът прави заявка към уеб сървъра. На заден план сървърът може да прави изпълнява допълнителни функции, като търсене в база данни. Тези функции са невидими за клиента. Когато сървърът е готов, той създава отговор и го изпраща.</p>
+        </div>
+        <div id="HTTPpage_Client" class="clientsservers-paragraph">
+            <h4>Какво е HTTP клиент?</h4>
+            <p>HTTP клиент е приложение, което действа от името на потребителя и изпраща заявки към сървъра. Обикновено HTTP клиентът е уеб браузър или приложение на мобилен телефон. HTTP клиентът винаги иницира заявката, въпреки че има възможност за симулиране на съобщения, инициирани от сървъра. Например, за да се покаже уеб страница, браузърът първо изпраща заявка до mypage.com, за да получи HTML документ, представляващ страницата, и след това поредица от заявки за изображения, JavaScripts и CSS файлове.</p>
+        </div>
+        <div id="HTTPpage_Server" class="introduction-paragraph">
+            <h4>Какво е уеб сървър?</h4>
+            <p>От другата страна на канала за комуникация е уеб сървър, който обработва заявки от HTTP клиенти. За клиентите, сървърът изглежда като отделна машина, въпреки че на практика това може да бъде цяла група от сървъри, пред които се намират сървъри за разпределяне на товар (load balancer), защитни стени (firewalls) и обратни прокси (reverse proxies) сървъри. За ниско товарни уеб сайтове, една машина може да хоства множество сайтове с различни домейн имена. За такива сайтове главният HTTP Host указва кой сайт е изпратил заявката.</p>
+        </div>
+        <div id="HTTPpage_ProxyServer" class="introduction-paragraph">
+            <h2>Какво е прокси сървър?</h2>
+            <p>Между клиента и сървъра могат да има други компютри, които могат да получават, обработват и препращат HTTP съобщения. Те могат да бъдат невидими за HTTP слоя или да са видими със специални HTTP заглавки. Тези системи се наричат прокси сървъри. Прокситата могат потенциално да имат значително въздействие върху общата производителност на системата. Прокситата могат да изпълняват различни функции, като:</p>
+            <ul>
+                <li>кеширане</li>
+                <li>филтриране</li>
+                <li>балансиране на товара</li>
+                <li>удостоверяване</li>
+                <li>регистрация</li>
+            </ul>
+            <center>
+                <img src=".\assets\HTTTP\HTTPcomponents.png" width="500px" height="250px"/>
+            </center>
+        </div>
+        <div id="HTTPpage_Header" class="introduction-paragraph">
+            <h2>Какво е HTTP заглавие (Header)?</h2>
+            <p>HTTP заглавията са основната част на HTTP протокола и позволяват на клиенти и сървъри да предават допълнителна информация заедно с данните едни към други, позволявайки им да получават и обработват данните правилно. Например, HTTP заглавията могат да включват информация за размера (Content-Length) и типа (Content-Type) на данните в тялото на HTTP съобщението. HTTP заглавията съдържат текстова информация във формата "ключ: стойности" и се включват във всяка HTTP заявка и отговор.</p>
+            <p>Има четири вида заглавия:</p>
+            <ul>
+                <li><u>Общи </u>– приложими към заявките и отговорите</li>
+                <li><u>Заявка </u>– използват се само в заявките. Изпращат допълнителна информация за клиента до сървъра.</li>
+                <li><u>Отговор </u>– използват се само в отговорите от сървъра.</li>
+                <li><u>Субект </u>– използват се с тялото на съобщението.</li>
+            </ul>
+        </div>
+        <div id="HTTPpage_Request" class="introduction-paragraph">
+            <h2>Какво е HTTP заявка (request)?</h2>
+            <p>HTTP заявката е действие, което трябва да се извърши върху ресурс, идентифициран с определен URL. Първият ред на съобщението за HTTP заявка започва с името на метода, последвано от идентификатора на ресурса и версията на протокола. Методите за заявка са чувствителни към малки и големи букви (case-sensitive) и винаги трябва да бъдат с главни букви. HTTP дефинира различни методи за заявка,като всеки дефинира отделно действие, извършвано върху ресурс (GET - извличане на ресурс, POST - изпращане на ресурс).</p>
+            <center>
+                <img src=".\assets\HTTTP\HTTPrequest.png" width="500px" height="250px"/>
+            </center>
+            <p><u>Пример:</u></p>
+            <center>
+                <img src=".\assets\HTTTP\requestExample.png" width="400px" height="200px"/>
+            </center>
+        </div>
+        <div id="HTTPpage_Response" class="introduction-paragraph">
+            <h2>Какво е HTTP отговор (response)?</h2>
+            <p>HTTP отговорът е това, което клиентите получават от сървъра в отговор на техните HTTP заявки. Целтта на HTTP отговора е да предостави на клиента заявения ресурс или да информира клиента, че заявеното действие е завършено успешно, или да съобщи, че е възникнала грешка при обработката на заявката. Първият ред на HTTP отговора започва с версията на протокола, която сървърът автоматично е избрал в зависимост от заявката на клиента, последвана от статус код и кратко описание. HTTP отговорите могат да имат опционално тяло, което може да включва заявения ресурс (например заявената уеб страница) и HTTP заглавки, съдържащи важна информация за данните в тялото на заявката, като техния размер и тип.</p>
+            <center>
+                <img src=".\assets\HTTTP\HTTPresponse.png" width="500px" height="250px"/>
+            </center>
+            <p><u>Пример:</u></p>
+            <center>
+                <img src=".\assets\HTTTP\responseExample.png" width="400px" height="200px"/>
+            </center>
+        </div>
+        <div id="HTTPpage_StatusCode" class="introduction-paragraph">
+            <h2>Статус код</h2>
+            <p>Статус кодът на HTTP е трицифрено число, което показва статуса на HTTP заявката и типа на отговора. </p>
+            <p>Заедно със статусния код има фраза. Това е кратко описание на статусния код. Например код 404 включва фразата 'Not Found' и се показва, когато страницата не е намерена.</p>
+            <p>Първата цифра на статусния код указва типа на кода. Има пет категории:</p>
+            <ul>
+                <li>1xx - Информационни</li>
+                <li>2xx - Успешни</li>
+                <li>3xx - Пренасочване</li>
+                <li>4xx - Грешка на клиента</li>
+                <li>5xx - Грешка на сървъра</li>
+            </ul>
+            <table>
+                <tr>
+                    <th>Стат код</th>
+                    <th>Фраза</th>
+                    <th>Описание</th>
+                </tr>
+                <tr>
+                    <td>200</td>
+                    <td>OK</td>
+                    <td>Успешна заявка</td>
+                </tr>
+                <tr>
+                    <td>400</td>
+                    <td>Bad request</td>
+                    <td>Има синтактична грешка в кода</td>
+                </tr>
+                <tr>
+                    <td>404</td>
+                    <td>Page not found</td>
+                    <td>Заявеният документ не е наличен</td>
+                </tr>
+                <tr>
+                    <td>500</td>
+                    <td>Internal server error</td>
+                    <td>Възникнала е грешка в сървъра</td>
+                </tr>
+            </table>
+        </div>
+        <div id="HTTPpage_Identification" class="list-paragraph">
+            <h2>Идентификация на потребител и сървър</h2>
+            <p>HTTP протоколът е протокол без състояние. Затова трябва да съществува механизъм за идентификация на потребителя от уеб сървъра. Основните методи за постигане на идентификация са удостоверяването и бисквитките.</p>
+            <ol>
+                <li>
+                    <div>
+                        <h3>Удостоверяване (Authentication)</h3>
+                        <p>Когато клиентът направи заявка за уеб страница от уеб сървъра, сървърът удостоверява потребителя. По този начин всеки път, когато уеб потребителят или клиентът поиска някакъв обект, той трябва да предостави потребителско име и парола, за да бъде идентифициран от сървъра. Необходимостта от удостоверяване възниква, за да може сървърът да има контрол върху документите. И тъй като HTTP протоколът е без състояние, той трябва да предоставя информация всеки път, когато направи заявка за уеб страница. Удостоверяването се извършва в хедъра на заявката. Обикновено се използва кеш памет, за да се съхраняват потребителското име и парола на уеб потребителя, като така няма нужда да предоставя същата информация всеки път.</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h3>Бисквитки (Cookies)</h3>
+                        <p>Бисквитките се използват от уеб сървърите за идентификация на потребителя. Те са данни, съхранявани на компютъра на потребителя, когато браузърът посещава сайта на сървъра и се използват в почти всички големи сайтове.</p>
+                        <p>Когато браузърът на уеб потребителя поиска файл от уеб сървъра, той изпраща файла заедно с бисквитка. Така следващият път, когато браузърът на уеб потребителя поиска същия файл от сървъра, той изпраща предишната бисквитка на сървъра, за да се идентифицира, че браузърът преди това е поискал файл. И така уеб сървърът координира достъпа на потребителя до различни страници от сайта.</p>
+                        <p>Типичен пример може да бъде при онлайн пазаруването, където бисквитката се използва, за да се следи кошницата с пазаруване на потребителя.</p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+        <div id="HTTPpage_HTTPandTCP" class="introduction-paragraph">
+            <h2>Как HTTP и TCP работят заедно?</h2>
+            <p>Връзката се контролира на транспортния слой и е извън обхвата на HTTP. HTTP не изисква основният транспортен протокол да е на база свързване, само изисква той да бъде надежден, т.е. да не губи съобщения (или поне да предостави грешка в такива случаи). Сред двата най-разпространени транспортни протокола, TCP е надежден и UDP не е. HTTP следователно се основава на стандарта TCP, който е на база свързване.</p>
+            <p>Като пример е стриймване на видео от уеб сайт. Когато кликнете върху видеото, браузърът изпраща HTTP заявка до уеб сървъра, който хоства видеото. Сървърът след това изпраща HTTP отговор, който съдържа видео данните. Видео файлът обикновено е твърде голям, за да се предаде наведнъж. Вместо това видеото се разделя на по-малки пакети данни и се предават по мрежата по един по един.</p>
+            <p>TCP се грижи за това всеки пакет данни да се предаде правилно и надеждно. Когато се изпраща пакет, устройството, което го получава, изпраща обратна връзка, за да уведоми изпращащото устройство, че пакетът е получен правилно. Ако не се получисъобщение в определен интервал от време, пакетът се изпраща отново.</p>
+            <p>Ако не се използва TCP, видеото вероятно би било пълно с грешки и прекъсвания, тъй като пакети данни могат да бъдат загубени или повредени по време на предаването. Така че в този пример TCP е основният протокол, който позволява плавното и надеждно стриймване на видеото, докато HTTP е протокола на по-високо ниво, използван за заявка и получаване на видеото от уеб сървъра.</p>
+            <a href="TCP_page.html">Научете повече за TCP/IP</a>
+        </div>
+        <div id="HTTPpage_Pros" class="introduction-paragraph">
+            <h2>Предимства на HTTP</h2>
+            <ul>
+                <li>Ниската използвана памет и ниска натовареност на процесора поради по-малко връзки.</li>
+                <li>Понеже ръкостискането се извършва в началната фаза на връзката, латентността се намалява, тъй като няма нужда от допълнително ръкостискането за следващите заявки.</li>
+                <li>Грешките могат да бъдат съобщавани без да се затваря връзката.</li>
+                <li>HTTP позволява HTTP "pipe-lining" на заявки или отговори.</li>
+                <li>HTTP е проектиран да бъде прост и лесен за разбиране от хората и лесно обработван от компютрите. Разработчиците могат да дебъгват HTTP съобщения.</li>
+                <li>HTTP хедърите правят протокола лесен за разширение. Нови функционалности могат лесно да бъдат добавени чрез прости комуникации между клиент и сървър относно семантиката на новото заглавие, HTTP метод и тяло на съобщението.</li>
+                <li>HTTP е без състояние, но не и без сесия: няма връзка между две заявки, направени от същия клиент в същата сесия. Въпреки това това може частично да се пресече с HTTP бисквитките.</li>
+                <li>Тъй като HTTP се базира на TCP (Протокол за пренос на данни), той е протокол, ориентиран към връзката. Следователно връзката се установява и данните се изпращат през нея само след установяването на връзката.</li>
+                <li>HTTP може да се използва за пренос на данни в различни файлови формати като HTML, текстови файл, аудио файл, видео файл и др.</li>
+                <li>Протоколът HTTP е независим от носителя, тъй като данните могат да се изпращат, докато и клиентът, и сървърът знаят как да обработват съдържанието на данните. И за клиента и за сървъра се изисква да посочат типа на съдържанието в MIME-type хедъра.</li>
+            </ul>
+        </div>
+        <div id="HTTPpage_Cons" class="introduction-paragraph">
+            <h2>Недостатъци на HTTP</h2>
+            <ul>
+                <li>HTTP е по-малко защитен, защото не използва метод за кодиране като HTTPS, който използва TLS, за да кодира обикновени HTTP заявки и отговори.</li>
+                <li>HTTP не е оптимизиран за мобилните телефони и е твърде „chatty“ (разговорлив – изпращат се твърде много съобщения).</li>
+                <li>Клиентът не затваря връзката, докато получи пълни данни от сървъра; следователно сървърът трябва да изчаква завършването на данните и не може да бъде наличен за други клиенти през този период.</li>
+            </ul>
+        </div>
+        
+        <div class="arrow-container">
+            <a href="SSLTLS_page.html" class="arrow-link">
+                <div class="arrow left-arrow"></div>
+                <span>Предишна страница</span>
+            </a>
+    
+            <a href="HTTPS_page.html" class="arrow-link">
+                <span>Следваща страница</span>
+                <div class="arrow right-arrow"></div>
+            </a>
+        </div>
+    </div>
+    
+    
+    <footer>
+        <p>Христиана Алексанрова Христова</p>
+        <p>Факултетен номер: 121220041</p>
+        <p style="color: #d9ac26;">Курсов проект по Компютърни Мрежи</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+    
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+    
+                if (targetElement) {
+                    const offset = 60; // Adjust this value based on your fixed header height
+                    const targetPosition = targetElement.offsetTop - offset;
+    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
